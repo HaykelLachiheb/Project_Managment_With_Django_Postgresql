@@ -1,0 +1,66 @@
+
+
+
+
+
+{% extends "partials/base.html" %}
+{% load static %}
+
+
+<DOCTYPE html>
+    <html lang="fr">
+        <meta charset="UTF-8" />
+        <title>Delete Task</title>
+  
+        <link href="{% static 'css/TaskManagment.css' %}" rel="stylesheet" />
+  
+        <link
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          rel="stylesheet"
+        />
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+      </head>
+    
+
+
+
+<body>
+  {% block content %}
+
+  {% if messages %}
+  <div style="margin-top:115px">
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">
+        {{ message }}
+      </div>
+    {% endfor %}
+  </div>
+
+  {% else %}
+  <a href="#" class="btn btn-primary" style="margin-top:30px;width:415px;padding-top:12px;margin-left:29%">{{ success_message3 }}</a>  
+    
+   </span>
+{% endif %}
+
+<!-- Carte Supprimer une tâche -->
+<div id="deleteTaskCard" class="card" style="width:50%;margin-left:25%">
+  <a href="#" class="btn btn-primary" style="width:100%; background-color: #F33527; border-color: #F33527;">Delete Task</a>
+
+  <form method="POST" action="{% url 'Delete_Task' %}" class="form-horizontal p-4">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="TaskID">Task ID</label>
+      <input type="number" class="form-control" id="TaskID" name="TaskID" placeholder="Enter Task ID">
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-danger">Delete Task</button>
+    </div>
+  </form>
+</div>
+
+
+
+
+{% endblock %}
+
+</body>

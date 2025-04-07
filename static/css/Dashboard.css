@@ -1,0 +1,257 @@
+
+
+#ProjectDetails{
+    width: 100%;
+    height: 10%;
+    background-color: #2F3443;
+    padding: auto;
+    margin: auto;  
+    border: 2px solid rgb(240, 240, 247);
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 0 20px 0 rgba(2, 2, 36, 0.2);
+}
+
+#DashboardTitle{
+    width: 45%;
+    height: 80%;
+    font-family: cursive;
+    font-size: 25px;
+    color: #0099E1;
+    margin: auto;
+    padding: auto;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+#DashboardTitle2{
+    width: 100%;
+    height: 80%;
+    font-family: cursive;
+    font-size: 15px;
+    color: white;
+    margin: auto;
+    padding: auto;
+}
+
+
+#WelcomeLogo{
+    width: 315px;
+    height: 80%;
+    
+    
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+#iconWelcome{
+    padding-top: 2px;
+    
+}
+
+#WelcomeText{
+    width: 88%;
+    height: 100%;
+    font-size: 20px;
+    font-family: cursive;
+    color:white;
+}
+
+#LogOut{
+    width: 250px;
+    height: 80%;
+    
+    margin-right: 20px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#LogOut iconLogout{
+    width: 70px;
+    height: 70px;
+}
+
+#LogOut Text{
+    width: 70px;
+    height: 70px;
+    font-size: 20px;
+    padding-left: 5px;
+    font-family: cursive;
+    padding-left: 5px;
+}
+
+
+
+
+#DashboardLogo{
+    width: 100%;
+    height: 80%;
+    
+    text-align: center;
+}
+
+
+#DashboardText{
+    width: 25%;
+    height: 80%;
+   
+    font-size: 18px;
+    color: white;
+    margin: auto;
+    padding: auto;
+    
+
+}
+
+
+#ProjectData{
+    width: 80%;
+    height: 60%;    
+    padding: auto;
+    margin: auto;
+    border: 2px solid black;
+    border-top-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    margin-top: 20px;
+    background-color: #2F3443;
+    box-shadow: 0 0 20px 0 rgba(2, 2, 36, 0.2);
+    display: flex;
+    justify-content: space-around;    
+    flex-wrap: wrap;
+}
+
+#ProjectData1{
+    width: 45%;
+    height: 45%;
+    border: 2px solid white;
+    border-radius: 50px;
+    box-shadow: 0 0 20px 0 rgba(219, 219, 228, 0.2);
+    margin-top: 10px;
+    position: relative;
+    font-family: cursive;
+    font-size: 35px;
+}
+#ProjectData2{
+    width: 45%;
+    height: 45%;
+    border: 2px solid white;
+    border-radius: 50px;
+    box-shadow: 0 0 20px 0 rgba(219, 219, 228, 0.2);
+    margin-top: 10px;
+    position: relative;
+    font-family: cursive;
+    font-size: 35px;
+}
+#ProjectData3{
+    width: 45%;
+    height: 45%;
+    border: 2px solid white;
+    border-radius: 50px;
+    box-shadow: 0 0 20px 0 rgba(219, 219, 228, 0.2);
+    margin-top: 10px;
+    position: relative;
+    font-family: cursive;
+    font-size: 35px;
+    
+}
+#ProjectData4{
+    width: 45%;
+    height: 45%;
+    border: 2px solid white;
+    border-radius: 50px;
+    box-shadow: 0 0 20px 0 rgba(219, 219, 228, 0.2);
+    margin-top: 10px;
+    position: relative;
+    font-family: cursive;
+    font-size: 35px;
+}
+
+#ProjectDataImg1{
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    border-radius: 50px;
+
+}
+
+#ProjectData1 h3{
+    width: 80%;
+    position: absolute;
+    top:35%;
+    left: 65%;
+    transform: translateX(-50%);
+}
+
+#ProjectData2 h3{
+    width: 80%;
+    position: absolute;
+    top:35%;
+    left: 70%;
+    transform: translateX(-50%);
+}
+
+#ProjectData3 h3{
+    width: 80%;
+    position: absolute;
+    top:35%;
+    left: 60%;
+    transform: translateX(-50%);
+}
+
+#ProjectData4 h3{
+    width: 80%;
+    position: absolute;
+    top:35%;
+    left: 75%;
+    transform: translateX(-50%);
+}
+
+
+
+#ProjectTimeline{
+    width: 80%;
+    height: 20%;    
+    padding: auto;
+    margin: auto;
+    border: 2px solid red;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-top: 20px;
+    background-color: #2F3443;
+    box-shadow: 0 0 20px 0 rgba(2, 2, 36, 0.2);
+    display: flex;
+    justify-content: space-around;
+}
+
+#date-du-jour{
+    width: 10px;
+    height: 10px;
+}
+
+#ProductivityReport{
+    width: 30%;
+    height: 80%;
+    border: 2px solid white;
+    border-radius: 50px;
+    box-shadow: 0 0 20px 0 rgba(219, 219, 228, 0.2);
+    margin-top: 10px;
+   
+    position: relative;
+    font-family: cursive;
+    font-size: 35px;
+}
+
+#ProductivityReport h3{
+    width: 80%;
+    position: absolute;
+    top:35%;
+    left: 55%;
+    transform: translateX(-50%);
+
+}

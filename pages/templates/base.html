@@ -1,0 +1,34 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Project{% endblock %}</title>
+    <!-- Lien vers Bootstrap via CDN -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <script src="{% static 'https://kit.fontawesome.com/3d9ffd68dd.js' %} crossorigin="anonymous"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+   
+ 
+  <body>
+
+    <!-- Contenu spécifique aux pages -->
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+
+
+    <!-- Scripts Bootstrap via CDN -->
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+
+</html>

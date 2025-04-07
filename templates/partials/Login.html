@@ -1,0 +1,102 @@
+{% extends "partials/Base2.html" %}
+ {% load static %}
+
+<DOCTYPE html>
+  <html lang="fr">
+    <head>
+      <meta charset="UTF-8" />
+      <title>Login</title>
+
+      <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+     
+      <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+   
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+   
+    </head>
+
+    <body>
+      {% block content %}
+      <section id="vh-70" style="background: #F5F5F5; display: flex; align-items: center; justify-content: center; height: 640px; padding: 20px;width:640px;margin:auto;margin-top:50px">
+        <div class="card" style="max-width: 400px; width: 100%; background: #FFFFFF; border-radius: 12px; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); padding: 40px;">
+          <h2 class="text-center" style="color: #00796B; font-weight: 700; font-family: 'Lora', serif; margin-bottom: 20px;">ChronoPlan</h2>
+          <p class="text-center" style="color: #00796B; font-family: 'Lora', serif; margin-bottom: 30px;">Sign in to your account</p>
+      
+          <form id="LoginForm" action="{% url 'Login' %}" method="post">
+            {% csrf_token %}
+            
+            <!-- Username -->
+            <div class="form-group mb-4">
+              <label for="usernameInput" style="color: #607D8B; font-family: 'Lora', serif;">Username</label>
+              <input type="text" id="usernameInput" name="username" class="form-control" placeholder="Enter your username" required style="border: 1px solid #B0BEC5; border-radius: 8px; padding: 12px; font-family: 'Lora', serif; color: #455A64;">
+            </div>
+            
+            <!-- Password -->
+            <div class="form-group mb-4">
+              <label for="passwordInput" style="color: #607D8B; font-family: 'Lora', serif;">Password</label>
+              <input type="password" id="passwordInput" name="password" class="form-control" placeholder="Enter your password" required style="border: 1px solid #B0BEC5; border-radius: 8px; padding: 12px; font-family: 'Lora', serif; color: #455A64;">
+            </div>
+      
+            <!-- Remember Me & Forgot Password -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <div>
+                <input type="checkbox" id="rememberMe" name="remember_me" style="accent-color: #00796B;">
+                <label for="rememberMe" style="color: #607D8B; font-family: 'Lora', serif;">Remember me</label>
+              </div>
+              <a href="{% url 'reset' %}" style="color: #00796B; font-size: 0.9rem; font-family: 'Lora', serif; text-decoration: none;">Forgot password?</a>
+            </div>
+      
+            <!-- Buttons -->
+            <div class="d-grid gap-3">
+              <button type="submit" class="btn btn-primary btn-lg" style="background: #00796B; border: none; color: white; font-family: 'Lora', serif; border-radius: 8px; padding: 12px; transition: background-color 0.3s ease;">
+                Log in
+              </button>
+              <button type="reset" class="btn btn-outline-primary btn-lg" style="background: #ffffff; color: #00796B; border: 1px solid #00796B; border-radius: 8px; padding: 12px; transition: background-color 0.3s ease;">
+                Reset
+              </button>
+            </div>
+          </form>
+      
+          <!-- Sign-Up Link -->
+          <p class="text-center mt-4" style="color: #00796B; font-family: 'Lora', serif;">Don't have an account? 
+            <a href="http://127.0.0.1:8000/signup" style="color: #00796B; font-weight: 600; text-decoration: none;">Sign Up</a>
+          </p>
+        </div>
+      </section>
+      
+
+ <!-- Error Message -->
+                 {% if messages %}
+                  <div >
+                      {% for message in messages %}
+                          <div style="font-family:Avantgarde;background:red;color:white" class="alert alert-{{ message.tags }} text-center" role="alert">
+                              {{ message }}
+                  </div>
+                      {% endfor %}
+                  </div>
+{% endif %}
+      
+
+
+      
+      {% endblock %}
+
+      <script>
+      src="{% static 'https://kit.fontawesome.com/3d9ffd68dd.js' %}" 
+      crossorigin="anonymous"
+      </script>
+
+      <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://kit.fontawesome.com/3d9ffd68dd.js"
+        crossorigin="anonymous"
+      ></script>
+      
+      <script src="{% static 'js/script.js' %}"></script>
+    </body></html
+></DOCTYPE>

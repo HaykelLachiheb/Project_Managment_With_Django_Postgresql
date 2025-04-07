@@ -1,0 +1,396 @@
+{% load static %}
+
+<DOCTYPE html id="MyDoc">
+    <html lang="fr">
+        <head>
+            <meta charset="UTF-8" />
+            <title>Phases Completed</title>
+      
+            <link href="{% static 'css/PhasesCompleted.css' %}" rel="stylesheet" />
+           
+            <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+            <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+          </head>
+    
+    
+    
+
+
+    <body id="MyBody"   onunload="myFunctionBody2()">
+
+        {% block content %}
+
+        <section id="ProjectDetails">
+
+            <h3 id="DashboardTitle">Phases % Completed
+            </h3>
+            <div id="DashboardLogo">
+
+                <i id="icon" class="fas fa-cubes fa-2x me-3" style="color: #B91116;" ></i>
+                <span class="h1 fw-bold mb-0" style="color: white;">ChronoPlan</span>
+            </div>
+            <div id="DashboardText">
+
+                <h3 id="DashboardTitle2">
+                   
+                    
+
+                    <iframe name="date du jour" id="date-du-jour" style="width:150px;height:250px; font-family: cursive;" src="https://www.mathieuweb.fr/calendrier/date-jour-bleu.html" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
+                    
+                    
+                </h3>
+            </div>
+
+            <div id="WelcomeLogo" style="width:400px;cursor:pointer;" onclick="window.location.href='{% url 'main' %}'" >
+                <i id="iconWelcome" class="fa-solid fa-reply" style="color: white;"></i>
+                <h1 id="WelcomeText" style="color:white;font-weight: bold;padding-left: 5px;text-success:white"class="text-success">Bach To Main |</h1>
+
+            </div>
+
+            <div id="WelcomeLogo" style="width:500px">
+                <i id="iconWelcome" class="fa-regular fa-hand" style="color: white;"></i>
+                <h1 id="WelcomeText" style="color: white;font-weight: bold;padding-left: 5px;"class="text-success">Welcome, {{user.username}} |</h1>
+
+            </div>
+            
+            
+            <div id="LogIn" id="ProjectData2" onclick="window.location.href='{% url 'logout' %}'" style="cursor: pointer;width:200px;display:flex;justify-content:space-between;margin-top:15px">
+                <i id="iconLogout" style="color: white;padding-top: 2px;" class="fa-solid fa-right-to-bracket"></i>
+                <h1 id="Text" style="color: red; width: 90px;height: 50px;font-size: 20px;font-family: cursive;padding-left: 5px;font-weight: bold;" >Log Out</h1>
+
+
+            
+
+
+
+
+
+            <div></div>
+
+
+
+ 
+        </section>
+
+        <section id="ProjectData">
+
+           <h3 id="HeaderLeft">Project Phases</h3>
+
+            <div id="Container" style="display: flex;
+            flex-direction: row;
+            align-items: flex-end;">
+
+                <div id="Phase1" style="height: {{value}}%; background-color: lightblue;position: relative;
+            overflow: hidden;" >
+                <div id="Phase1_Overlay" style="width: 100%;
+            height: 0; /* Commence à 0% */
+            background-color: rgba(0, 0, 255, 0.7);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            bottom: 0;
+            
+            transition: height 2s ease-in-out;">
+                                <h3 style="font-size:15px">{{First_Name}}</h3>
+                                <h6>
+                                   {{value}}%
+
+
+                                </h6>
+                    </div>
+                </div>
+                <div id="Phase2" style="height: {{second_value}}%; background-color: lightblue;position: relative;
+            overflow: hidden;" >
+            <div id="Phase2_Overlay" style="width: 100%;
+            height: 0; /* Commence à 0% */
+            background-color: rgba(0, 0, 255, 0.7);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            bottom: 0;
+            
+            transition: height 2s ease-in-out;">
+                                <h3 style="font-size:15px">{{Second_Name}}</h3>
+                                <h6>
+                                   {{second_value}}%
+
+
+                                </h6>
+                    </div>
+                </div>
+                <div id="Phase3" style="height: {{third_value}}%; background-color: lightblue;position: relative;
+            overflow: hidden;" >
+            <div id="Phase3_Overlay" style="width: 100%;
+            height: 0; /* Commence à 0% */
+            background-color: rgba(0, 0, 255, 0.7);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            bottom: 0;
+            
+            transition: height 2s ease-in-out;">
+                                <h3 style="font-size:15px">{{Third_Name}}</h3>
+                                <h6>
+                                   {{third_value}}%
+
+
+                                </h6>
+                    </div>
+                </div>
+                <div id="Phase4" style="height: {{fourth_value}}%; background-color: lightblue;position: relative;
+                overflow: hidden;" >
+                <div id="Phase4_Overlay" style="width: 100%;
+                height: 0; /* Commence à 0% */
+                background-color: rgba(0, 0, 255, 0.7);
+                color: white;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                bottom: 0;
+                
+                transition: height 2s ease-in-out;">
+                                    <h3 style="font-size:15px">{{Fourth_Name}}</h3>
+                                    <h6>
+                                       {{fourth_value}}%
+    
+    
+                                    </h6>
+                        </div>
+                    </div>
+                    <div id="Phase5" style="height: {{fifth_value}}%; background-color: lightblue;position: relative;
+                    overflow: hidden;" >
+                    <div id="Phase5_Overlay" style="width: 100%;
+                    height: 0; /* Commence à 0% */
+                    background-color: rgba(0, 0, 255, 0.7);
+                    color: white;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    position: absolute;
+                    bottom: 0;
+                    
+                    transition: height 2s ease-in-out;">
+                                        <h3 style="font-size:15px">{{Fifth_Name}}</h3>
+                                        <h6>
+                                           {{fifth_value}}%
+        
+        
+                                        </h6>
+                            </div>
+                        </div>
+                        <div id="Phase6" style="height: {{sixth_value}}%; background-color: lightblue;position: relative;
+                        overflow: hidden;" >
+                        <div id="Phase6_Overlay" style="width: 100%;
+                        height: 0; /* Commence à 0% */
+                        background-color: rgba(0, 0, 255, 0.7);
+                        color: white;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        position: absolute;
+                        bottom: 0;
+                        
+                        transition: height 2s ease-in-out;">
+                                            <h3 style="font-size:15px">{{Sixth_Name}}</h3>
+                                            <h6>
+                                               {{sixth_value}}%
+            
+            
+                                            </h6>
+                                </div>
+                            </div>
+                            <div id="Phase7" style="height: {{seventh_value}}%; background-color: lightblue;position: relative;
+                            overflow: hidden;" >
+                            <div id="Phase7_Overlay" style="width: 100%;
+                            height: 0; /* Commence à 0% */
+                            background-color: rgba(0, 0, 255, 0.7);
+                            color: white;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                            position: absolute;
+                            bottom: 0;
+                            
+                            transition: height 2s ease-in-out;">
+                                                <h3 style="font-size:15px">{{Seventh_Name}}</h3>
+                                                <h6>
+                                                   {{seventh_value}}%
+                
+                
+                                                </h6>
+                                    </div>
+                                </div>
+                                <div id="Phase8" style="height: {{eighth_value}}%; background-color: lightblue;position: relative;
+                                overflow: hidden;" >
+                                <div id="Phase8_Overlay" style="width: 100%;
+                                height: 0; /* Commence à 0% */
+                                background-color: rgba(0, 0, 255, 0.7);
+                                color: white;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                justify-content: center;
+                                position: absolute;
+                                bottom: 0;
+                                
+                                transition: height 2s ease-in-out;">
+                                                    <h3 style="font-size:15px">{{Eighth_Name}}</h3>
+                                                    <h6>
+                                                       {{eighth_value}}%
+                    
+                    
+                                                    </h6>
+                                        </div>
+                                    </div>
+                                    <div id="Phase9" style="height: {{nineth_value}}%; background-color: lightblue;position: relative;
+                                    overflow: hidden;" >
+                                    <div id="Phase9_Overlay" style="width: 100%;
+                                    height: 0; /* Commence à 0% */
+                                    background-color: rgba(0, 0, 255, 0.7);
+                                    color: white;
+                                    display: flex;
+                                    flex-direction: column;
+                                    align-items: center;
+                                    justify-content: center;
+                                    position: absolute;
+                                    bottom: 0;
+                                    
+                                    transition: height 2s ease-in-out;">
+                                                        <h3 style="font-size:15px">{{Nineth_Name}}</h3>
+                                                        <h6>
+                                                           {{nineth_value}}%
+                        
+                        
+                                                        </h6>
+                                            </div>
+                                        </div>
+                                        <div id="Phase10" style="height: {{tenth_value}}%; background-color: lightblue;position: relative;
+                                        overflow: hidden;" >
+                                        <div id="Phase10_Overlay" style="width: 100%;
+                                        height: 0; /* Commence à 0% */
+                                        background-color: rgba(0, 0, 255, 0.7);
+                                        color: white;
+                                        display: flex;
+                                        flex-direction: column;
+                                        align-items: center;
+                                        justify-content: center;
+                                        position: absolute;
+                                        bottom: 0;
+                                        
+                                        transition: height 2s ease-in-out;">
+                                                            <h3 style="font-size:15px">{{Tenth_Name}}</h3>
+                                                            <h6>
+                                                               {{tenth_value}}%
+                            
+                            
+                                                            </h6>
+                                                </div>
+                                            </div>
+
+
+
+
+            </div>
+
+            
+            
+
+
+            
+        </section>
+
+
+
+        {% endblock %}
+
+        
+
+
+
+
+
+
+        <script>
+        src="{% static 'https://kit.fontawesome.com/3d9ffd68dd.js' %}" 
+        crossorigin="anonymous"
+        </script>
+  
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+          crossorigin="anonymous"
+        ></script>
+        <script
+          src="https://kit.fontawesome.com/3d9ffd68dd.js"
+          crossorigin="anonymous"
+        ></script>
+        <script src="{% static 'js/script.js' %}"></script>
+
+
+
+        <script type="text/javascript">
+            // Passer la variable Django à JavaScript
+            var maVariableJS = "{{value}}";
+    
+            console.log(maVariableJS);  // Affiche 'Valeur à passer' dans la console JavaScript
+        </script>
+        
+        <script>
+            // Lorsque la page est chargée, l'animation est déclenchée
+            window.onload = function () {
+                const overlay = document.getElementById("Phase1_Overlay");
+                overlay.style.height = "100%"; // Passe de 0 à 100%
+
+                const overlay2 = document.getElementById("Phase2_Overlay");
+                overlay2.style.height = "100%"; // Passe de 0 à 100%
+
+                const overlay3 = document.getElementById("Phase3_Overlay");
+                overlay3.style.height = "100%"; // Passe de 0 à 100%
+
+                const overlay4 = document.getElementById("Phase4_Overlay");
+                overlay4.style.height = "100%"; // Passe de 0 à 100%
+
+                const overlay5 = document.getElementById("Phase5_Overlay");
+                overlay5.style.height = "100%"; // Passe de 0 à 100%
+
+                const overlay6 = document.getElementById("Phase6_Overlay");
+                overlay6.style.height = "100%"; // Passe de 0 à 100%
+
+                const overlay7 = document.getElementById("Phase7_Overlay");
+                overlay7.style.height = "100%"; // Passe de 0 à 100%
+
+                const overlay8 = document.getElementById("Phase8_Overlay");
+                overlay8.style.height = "100%"; // Passe de 0 à 100%
+
+                const overlay9= document.getElementById("Phase9_Overlay");
+                overlay9.style.height = "100%"; // Passe de 0 à 100%
+
+                const overlay10 = document.getElementById("Phase10_Overlay");
+                overlay10.style.height = "100%"; // Passe de 0 à 100%
+            };
+
+           
+        </script>
+
+
+
+
+
+    </body>
+    
+    
+    </html>

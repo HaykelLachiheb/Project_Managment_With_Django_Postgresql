@@ -1,0 +1,111 @@
+
+
+
+
+{% load static %}
+
+<DOCTYPE html>
+    <html lang="fr">
+        <meta charset="UTF-8" />
+        <title>Login</title>
+  
+        <link href="{% static 'css/TaskManagment.css' %}" rel="stylesheet" />
+  
+        <link
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          rel="stylesheet"
+        />
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+      </head>
+    
+
+
+
+<body>
+  {% block content %}
+
+<section id="ProjectDetails" style="height:10%;background:#2F3443">
+
+  <h3 id="DashboardTitle">
+      Update Task
+  </h3>
+  <div id="DashboardLogo" style="width:55%;margin-top:3px">
+
+      <i id="icon" class="fas fa-cubes fa-2x me-3" style="color: #ff6219;" ></i>
+      <span class="h1 fw-bold mb-0" style="color: white;">ChronoPlan</span>
+  </div>
+  <div id="DashboardText">
+
+      <h3 id="DashboardTitle2">
+         
+          
+
+          <iframe name="date du jour" id="date-du-jour" style="width:150px;height:250px; font-family: cursive;" src="https://www.mathieuweb.fr/calendrier/date-jour-bleu.html" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
+          
+          
+      </h3>
+  </div>
+
+  <div id="WelcomeLogo" style="margin-top:20px;cursor:pointer;width:330px" onclick="window.location.href='{% url 'main' %}'">
+      <i id="iconWelcome" class="fa-regular fa-hand" style="color: white;"></i>
+      <h1 id="WelcomeText" style="color: white;font-weight: bold;padding-left: 5px;"class="text-success">Back To Main |</h1>
+
+  </div>
+
+  <div id="WelcomeLogo" style="width:370px;margin-top:20px">
+      <i id="iconWelcome" class="fa-regular fa-hand" style="color: white;"></i>
+      <h1 id="WelcomeText" style="color: white;font-weight: bold;padding-left: 5px;"class="text-success">Welcome, {{user.username}} |</h1>
+
+  </div>
+  
+  
+  <div id="LogOut" style="cursor: pointer;margin-top:20px"
+  onclick="window.location.href='{% url 'logout' %}'">
+      <i id="iconLogout" style="color: white;padding-top: 2px;" class="fa-solid fa-right-to-bracket"></i>
+      <h1 id="Text" style="color: white; width: 90px;height: 50px;font-size: 20px;font-family: cursive;padding-left: 5px;font-weight: bold;" >Log Out</h1>
+
+
+  
+
+
+
+
+
+  <div></div>
+
+
+
+</section>
+
+<section>
+
+<form
+  method="POST"
+  action=""
+  style="
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 75%;
+    background: #2f3443;
+    width: 50%;
+    margin: auto;
+    margin-top: 50px;
+  "
+>
+  {% csrf_token %}
+
+  <div class="card" style="width:70%;height:30%;margin-top:20%">
+    <a href="#" class="btn btn-primary" style="font-size:20px">Message</a>
+   
+    <div class="card-body">
+      <h5 class="card-title">Employee {{employee.EmployeeName}} has been updated successfully</h5>
+      
+      
+    </div>
+  </div>
+
+{% endblock %}
+
+</body>

@@ -1,0 +1,142 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+<head>
+
+    {% block stylesheets %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+<link href="{% static 'css/material-dashboard.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/material-dashboard.css.map' %}" rel="stylesheet" />
+  <link href="{% static 'css/material-dashboard.min.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/material-dashboard-rtl.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+
+
+ <!-- Bootstrap CSS -->
+ <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+ <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" />
+ <link href="{% static 'css/bootstrap.css.map' %}" rel="stylesheet" />
+ <link href="{% static 'css/bootstrap.min.css.map' %}" rel="stylesheet" />  
+ <link href="{% static 'css/bootstrap-grid.css' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-grid.css.map' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-grid.min.css' %}" rel="stylesheet" />  
+ <link href="{% static 'css/bootstrap-grid.min.css.map' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-reboot.css' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-reboot.css.map' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-reboot.min.css' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-reboot.min.css.map' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/demo.css' %}" rel="stylesheet" /> 
+
+
+<style>
+
+    /* Mise en page globale */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* Titre */
+h1 {
+  color: #333;
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Formulaire */
+.notification-form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Groupes de champs */
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Champs de saisie */
+.input-field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Champs texte area */
+textarea.input-field {
+  height: 120px;
+  resize: vertical;
+}
+
+/* Bouton de soumission */
+.submit-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #45a049;
+}
+
+
+
+</style>    
+
+
+
+
+{% endblock stylesheets %}
+
+
+{% block content %}
+<h1>Create Notification</h1>
+
+<form method="POST" class="notification-form">
+  {% csrf_token %}
+  
+  <div class="form-group">
+    <label for="user_id">User ID</label>
+    <input type="text" name="user_id" id="user_id" required class="input-field">
+  </div>
+
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" name="title" id="title" required class="input-field">
+  </div>
+
+  <div class="form-group">
+    <label for="message">Message</label>
+    <textarea name="message" id="message" required class="input-field"></textarea>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="submit-btn">Submit</button>
+  </div>
+</form>
+
+{% if success_message %}
+    <a href="#" class="btn btn-primary" style="width:390px;padding-top:12px;margin-left:32%" >{{ success_message }}</a>  
+    
+{% endif %}
+
+{% endblock %}
+

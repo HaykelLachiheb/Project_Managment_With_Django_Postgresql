@@ -1,0 +1,251 @@
+{% extends "partials/base.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calendar</title>
+    {% block stylesheets %}
+
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+<link href="{% static 'css/material-dashboard.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/material-dashboard.css.map' %}" rel="stylesheet" />
+  <link href="{% static 'css/material-dashboard.min.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/material-dashboard-rtl.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+
+
+ <!-- Bootstrap CSS -->
+ <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+ <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" />
+ <link href="{% static 'css/bootstrap.css.map' %}" rel="stylesheet" />
+ <link href="{% static 'css/bootstrap.min.css.map' %}" rel="stylesheet" />  
+ <link href="{% static 'css/bootstrap-grid.css' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-grid.css.map' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-grid.min.css' %}" rel="stylesheet" />  
+ <link href="{% static 'css/bootstrap-grid.min.css.map' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-reboot.css' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-reboot.css.map' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-reboot.min.css' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-reboot.min.css.map' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/demo.css' %}" rel="stylesheet" /> 
+
+
+
+ <style>
+    /* Conteneur principal */
+    .calendar-wrapper {
+        max-width: 1000px;
+        margin: 40px auto;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+
+    /* En-tête */
+    .calendar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #007bff;
+        color: #fff;
+        padding: 20px;
+    }
+
+    .calendar-header h1 {
+        font-size: 1.8rem;
+        margin: 0;
+    }
+
+    .calendar-header button {
+        background: #fff;
+        color: #007bff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background-color 0.3s;
+    }
+
+    .calendar-header button:hover {
+        background: #f1f1f1;
+    }
+
+    /* Jours de la semaine */
+    .weekdays {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        background: #f5f5f5;
+        padding: 10px 0;
+        text-align: center;
+        font-weight: bold;
+        color: #333;
+    }
+
+    /* Grille des jours */
+    .days {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 2px;
+        background: #fff;
+        padding: 10px;
+    }
+
+    /* Case des jours */
+    .day {
+        min-height: 120px;
+        background: #f9f9f9;
+        border-radius: 8px;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: center;
+        transition: background 0.3s;
+    }
+
+    .day:hover {
+        background: #e7f1ff;
+    }
+
+    .day.today {
+        border: 2px solid #007bff;
+    }
+
+    .day-header {
+        font-weight: bold;
+        font-size: 1.2rem;
+        color: #007bff;
+    }
+
+    /* Tâches */
+    .tasks {
+        margin-top: 10px;
+    }
+
+    .task {
+        background: #007bff;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 0.9rem;
+        margin-bottom: 5px;
+        text-align: left;
+        transition: background-color 0.3s;
+    }
+
+    .task:hover {
+        background: #0056b3;
+    }
+
+    .task small {
+        display: block;
+        font-size: 0.75rem;
+        color: #e0e0e0;
+    }
+
+
+    .tasks-calendar-title {
+        font-family: 'Poppins', sans-serif;
+        font-size: 28px;
+        font-weight: bold;
+        color: #333; /* Couleur neutre pour le texte */
+        text-align: center;
+        margin: 20px 0;
+        padding: 15px;
+        position: relative;
+        background-color: #F5F5F5; /* Fond clair pour contraste */
+        border: none;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+    
+      .tasks-calendar-title::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 5px;
+        width: 100%;
+        background: linear-gradient(to right, #FF6F61, #FFC371); /* Dégradé pour la barre */
+      }
+    
+      .tasks-calendar-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 3px;
+        width: 50px;
+        background-color: #FF6F61; /* Accent */
+        border-radius: 2px;
+      }
+
+</style>
+
+{% endblock stylesheets %}
+
+<body>
+    {% block content %}
+    <div class="calendar-wrapper">
+        <h4 class="tasks-calendar-title">Tasks Calendar</h4>
+        <!-- En-tête -->
+        <div class="calendar-header">
+            <h1>📅 {{ current_date|date:"F Y" }}</h1>
+            <div>
+                <button>⏮ Prev</button>
+                <button>Next ⏭</button>
+            </div>
+        </div>
+
+        <!-- Jours de la semaine -->
+        <div class="weekdays">
+            <div>Mon</div>
+            <div>Tue</div>
+            <div>Wed</div>
+            <div>Thu</div>
+            <div>Fri</div>
+            <div>Sat</div>
+            <div>Sun</div>
+        </div>
+
+        <!-- Grille des jours -->
+        <div class="days">
+            {% for week in weeks %}
+                {% for day in week %}
+                    {% if day %}
+                        <div class="day {% if current_date.day == day %}today{% endif %}">
+                            <!-- Numéro du jour -->
+                            <div class="day-header">{{ day }}</div>
+
+                            <!-- Liste des tâches -->
+                            <div class="tasks">
+                                {% for task in tasks %}
+                                    {% if task.StartingDay.day == day %}
+                                        <div class="task">
+                                            📋 {{ task.TaskDesc }}
+                                            <small>👤 {{ task.Responsible }}</small>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% else %}
+                        <!-- Jour vide -->
+                        <div class="day"></div>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endblock %}
+</body>
+  
+
+</html>

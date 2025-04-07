@@ -1,0 +1,235 @@
+{% load static %}
+
+<DOCTYPE html>
+    <html lang="fr">
+        <meta charset="UTF-8" />
+        <title>Employees Managment</title>
+  
+        <link href="{% static 'css/TaskManagment.css' %}" rel="stylesheet" />
+  
+        <link
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          rel="stylesheet"
+        />
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+      </head>
+    
+    
+
+
+    <body>
+        {% block content %}
+
+        <section id="ProjectDetails" style="height:10%">
+
+            <h3 id="DashboardTitle" style="width:50%">
+                Employee Managment Overview
+            </h3>
+            <div id="DashboardLogo" style="width:55%;margin-top:3px">
+
+                <i id="icon" class="fas fa-cubes fa-2x me-3" style="color: #B91116;" ></i>
+                <span class="h1 fw-bold mb-0" style="color: white;">ChronoPlan</span>
+            </div>
+            <div id="DashboardText">
+
+                <h3 id="DashboardTitle2">
+                   
+                    
+
+                    <iframe name="date du jour" id="date-du-jour" style="width:150px;height:250px; font-family: cursive;" src="https://www.mathieuweb.fr/calendrier/date-jour-bleu.html" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
+                    
+                    
+                </h3>
+            </div>
+
+            <div id="WelcomeLogo" style="margin-top:20px;cursor:pointer;width:330px" onclick="window.location.href='{% url 'main' %}'">
+                <i id="iconWelcome" class="fa-regular fa-hand" style="color: white;"></i>
+                <h1 id="WelcomeText" style="color: white;font-weight: bold;padding-left: 5px;"class="text-success">Back To Main |</h1>
+
+            </div>
+
+            <div id="WelcomeLogo" style="width:370px;margin-top:20px">
+                <i id="iconWelcome" class="fa-regular fa-hand" style="color: white;"></i>
+                <h1 id="WelcomeText" style="color: white;font-weight: bold;padding-left: 5px;"class="text-success">Welcome, {{user.username}} |</h1>
+
+            </div>
+            
+            
+            <div id="LogOut" style="cursor: pointer;margin-top:20px"
+            onclick="window.location.href='{% url 'logout' %}'">
+                <i id="iconLogout" style="color: white;padding-top: 2px;" class="fa-solid fa-right-to-bracket"></i>
+                <h1 id="Text" style="color: white; width: 90px;height: 50px;font-size: 20px;font-family: cursive;padding-left: 5px;font-weight: bold;" >Log Out</h1>
+
+
+            
+
+
+
+
+
+            <div></div>
+
+
+ 
+        </section>
+
+        <section id="AddData" style="padding-top:0px;height:240px;box-shadow: 2px 5px #00008B;">
+
+
+
+
+            <div class="card-header" style="width:100%;text-align:center:""">
+                <ul class="nav nav-pills card-header-pills">
+                  <li class="nav-item" style="width:100%">
+                    <a class="nav-link active" href="#" style="font-family:fantasy;font-weight:bold;color:#2F3443">Add New Employee</a>
+                  </li>
+                  
+                </ul>
+              </div>
+             
+         
+            <form method="POST" action="{% url 'AddEmployee' %}" style="display:flex;justify-content:space-around;flex-wrap:wrap; width:100%">
+                {% csrf_token %}
+
+                <div style="width:100%;margin:auto;margin-left:60px" >
+                        <label style="width:15%" for="EmployeeID">EmployeeID </label>
+                        <input  style="width:15%" type="number" id="EmployeeID" name="EmployeeID">
+                        
+                        <label  style="width:12%;margin-left:36px" for="EmployeeName">EmployeeName </label>
+                        <input  style="width:15%" type="text" id="EmployeeName" name="EmployeeName">
+                    
+                       
+                </div>
+
+
+               
+                <div id="GroupeBtn" style="width:22%;display:flex:justify-content:space-between;margin:auto;margin-top:15px">
+                        <button type="submit" class="btn btn-primary"  style="height:40px;width:100px;color:white;font-weight:bold">VALIDATE</button>
+                        <button type="button" class="btn btn-primary" style="margin-left:15px;height:40px;width:100px;color:white;font-weight:bold">DELETE</button>
+                </div>    
+            </form>
+            
+            
+
+
+
+            
+
+           
+              
+              
+
+
+
+
+        </section>
+
+        <section id="AddData" style="box-shadow: 2px 5px #00008B;;margin-top:10px;padding-top:0px;height:275px;display:flex;justify-content:space-between" >
+
+            <div id="PartLeft" style="width:45%;border:1px solid red" >
+
+                <div class="card-header">
+                    <ul class="nav nav-pills card-header-pills">
+                      <li class="nav-item" style="width:100%">
+                        <a class="nav-link active" href="#" style="font-family:fantasy;font-weight:bold;color:#2F3443">Delete Employee</a>
+                      </li>
+                      
+                    </ul>
+                  </div>
+                <form method="POST" action="{% url 'DeleteEmployee' %}" style="display:flex;justify-content:space-around;flex-wrap:wrap; width:100%;height:75%">
+                    {% csrf_token %}
+    
+                    <div style="width:100%;margin:auto;margin-left:20%" >
+                            <label style="width:35%;font-size:18px" for="EmployeeID">EmployeeID </label>
+                            <input  style="width:35%" type="number" id="EmployeeID" name="EmployeeID">
+                            
+                          
+                    </div>
+    
+                    <div id="GroupeBtn" style="width:100%;display:flex:justify-content:space-between;margin:auto;margin-top:15px;margin-left:30%">
+                        <button type="submit" class="btn btn-primary"  style="height:40px;width:100px;color:white;font-weight:bold">VALIDATE</button>
+                     
+                    </div>    
+                </form>
+                
+
+            </div>    
+
+            <div id="PartRight" style="width:45%;border:1px solid red" >
+               
+
+
+              <div class="card-header">
+                <ul class="nav nav-pills card-header-pills">
+                  <li class="nav-item" style="width:100%">
+                    <a class="nav-link active" href="#" style="font-family:fantasy;font-weight:bold;color:#2F3443">Update Employee</a>
+                  </li>
+                  
+                </ul>
+              </div>
+
+
+              <form method="POST" action="{% url 'fetch_employee'  %}" style="display:flex;justify-content:space-around;flex-wrap:wrap; width:100%;height:75%">
+                {% csrf_token %}
+
+                <div style="width:100%;margin:auto;margin-left:20%" >
+                        <label style="width:35%;font-size:18px" for="EmployeeID">EmployeeID </label>
+                        <input  style="width:35%" type="number" id="EmployeeID" name="EmployeeID">
+                        
+                      
+                </div>
+
+                <div id="GroupeBtn" style="width:100%;display:flex:justify-content:space-between;margin:auto;margin-top:15px;margin-left:30%">
+                    <button type="submit" class="btn btn-primary"  style="height:40px;width:100px;color:white;font-weight:bold">VALIDATE</button>
+                 
+                </div>    
+            </form>
+            
+            
+
+
+
+
+            </div>    
+
+            
+
+
+
+
+        </section>
+
+       
+            </div>
+          </div>
+
+       
+
+
+        
+        
+          {% endblock %}
+
+        <script>
+          src = "{% static 'https://kit.fontawesome.com/3d9ffd68dd.js' %}";
+          crossorigin = "anonymous";
+        </script>
+  
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+          crossorigin="anonymous"
+        ></script>
+        <script
+          src="https://kit.fontawesome.com/3d9ffd68dd.js"
+          crossorigin="anonymous"
+        ></script>
+        <script src="{% static 'js/script.js' %}"></script>
+
+
+
+
+    </body>
+    
+    
+    </html>

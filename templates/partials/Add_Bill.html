@@ -1,0 +1,239 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+<html lang="en">
+<head>
+
+    {% block stylesheets %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+<link href="{% static 'css/material-dashboard.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/material-dashboard.css.map' %}" rel="stylesheet" />
+  <link href="{% static 'css/material-dashboard.min.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/material-dashboard-rtl.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+
+
+ <!-- Bootstrap CSS -->
+ <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+ <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" />
+ <link href="{% static 'css/bootstrap.css.map' %}" rel="stylesheet" />
+ <link href="{% static 'css/bootstrap.min.css.map' %}" rel="stylesheet" />  
+ <link href="{% static 'css/bootstrap-grid.css' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-grid.css.map' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-grid.min.css' %}" rel="stylesheet" />  
+ <link href="{% static 'css/bootstrap-grid.min.css.map' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-reboot.css' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-reboot.css.map' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-reboot.min.css' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-reboot.min.css.map' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/demo.css' %}" rel="stylesheet" /> 
+
+ <style>
+    body {
+        background-color: #eef2f7;
+        font-family: Avantgarde;
+    }
+    .container {
+        max-width: 700px;
+        margin: 40px auto;
+        background: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        padding: 25px;
+    }
+    .progress-container {
+        margin: 15px 0 30px;
+    }
+    .progress-step {
+        text-align: center;
+        font-size: 12px;
+    }
+    .progress-step.active {
+        font-weight: bold;
+        color: #007bff;
+    }
+    
+    .form-header {
+        font-family: Avantgarde;
+        
+        font-size: 2rem;
+        color: #4A90E2;
+        text-align: center;
+        margin-bottom: 20px;
+        padding: 10px;
+        background: linear-gradient(145deg, #4A90E2, #00A4D3);
+        border-radius: 10px;
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+        display: inline-block;
+        color:white;
+       
+        width:560px;
+        height:60px;
+        margin:auto;
+        margin-left:240px;
+    }
+
+    .form-header:hover {
+        transform: scale(1.05);
+        transition: transform 0.3s ease-in-out;
+    }
+
+
+
+    .form-label {
+        font-weight: 500;
+        margin-top:20px;
+    }
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+    .icon {
+        font-size: 2rem;
+        color: #6c757d;
+    }
+    .icon.active {
+        color: #007bff;
+    }
+
+
+    .invoice-title {
+        font-family: 'Arial', sans-serif;
+        font-weight: 600;
+        font-size: 2rem; /* Augmente la taille de la police */
+        color: #2c3e50; /* Une couleur sombre et élégante */
+        text-transform: uppercase; /* Met en majuscule pour un look plus moderne */
+        letter-spacing: 1px; /* Espacement des lettres */
+        border-bottom: 2px solid #3498db; /* Ajoute une ligne sous le titre pour plus de structure */
+        padding-bottom: 10px; /* Un peu d'espace sous la ligne */
+        margin-top: 40px; /* Un peu d'espace avant le titre */
+        margin-bottom: 30px; /* Ajuste la distance sous le titre */
+    }
+
+
+</style>
+
+
+
+{% endblock stylesheets %}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Bill</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Barre de progression -->
+        <div class="progress-container d-flex justify-content-between align-items-center">
+            <div class="progress-step">
+                <i class="fas fa-file-upload icon active"></i>
+                <div>Step 1</div>
+            </div>
+            <div class="progress-bar flex-grow-1 mx-2" style="height: 2px; background: #007bff;"></div>
+            <div class="progress-step">
+                <i class="fas fa-file-pdf icon"></i>
+                <div>Step 2</div>
+            </div>
+        </div>
+
+        <!-- Formulaire d'upload Excel -->
+        <h3 class="text-center mb-4 invoice-title">List of Invoices</h3>
+        <form method="post" action="{% url 'Add_Bill' %}" enctype="multipart/form-data" id="excel-upload-form">
+            {% csrf_token %}
+            {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endif %}
+            {% if success_message %}
+                <div class="alert alert-success" role="alert">
+                    {{ success_message }}
+                </div>
+            {% endif %}
+
+            <div class="mb-3">
+                <label for="file" class="form-label">
+                    <i class="fas fa-file-excel me-2 text-success"></i>Upload Excel File:
+                </label>
+                <input type="file" class="form-control" id="file" name="file" accept=".xls,.xlsx" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">
+                <i class="fas fa-upload me-2"></i>Upload Excel
+            </button>
+        </form>
+
+        {% if rows %}
+        <hr class="my-4">
+        <h2 class="form-header" style="margin:auto;">Assign PDF Files to Invoices</h2>
+        <form method="post" action="{% url 'Add_Bill' %}" enctype="multipart/form-data" id="excel-upload-form">
+            {% csrf_token %}
+            {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endif %}
+            {% if success_message %}
+                <div class="alert alert-success" role="alert">
+                    {{ success_message }}
+                </div>
+            {% endif %}
+
+
+
+        
+            <div class="mb-3" style="margin-top:20px">
+                <label for="file" class="form-label"  >Upload Excel File:</label>
+                <input type="file" class="form-control" id="file" name="file" accept=".xls,.xlsx" required>
+            </div>
+        
+            <button type="submit" class="btn btn-primary w-100">Upload Excel</button>
+        </form>
+        
+        <!-- Afficher les champs pour les fichiers PDF après avoir traité le fichier Excel -->
+        {% if rows %}
+        <form method="post" action="{% url 'Upload_PDFs' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <h3>Upload PDFs for Invoices</h3>
+            {% for row in rows %}
+                <div class="mb-3">
+                    <label for="pdf_file_{{ forloop.counter }}" class="form-label">
+                        Upload PDF for Invoice {{ row.Bill_ID }} (Amount: {{ row.amount }}, Due Date: {{ row.due_date }}):
+                    </label>
+                    <input type="file" class="form-control" id="pdf_file_{{ forloop.counter }}" name="pdf_files[]" accept=".pdf" required>
+                </div>
+            {% endfor %}
+            
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        
+        
+        {% endif %}
+        
+        {% endif %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+{% endblock %}
+

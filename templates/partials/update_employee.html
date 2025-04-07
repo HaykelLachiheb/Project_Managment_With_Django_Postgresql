@@ -1,0 +1,194 @@
+
+
+
+
+{% extends "partials/base.html" %}
+{% load static %}
+
+<DOCTYPE html>
+    <html lang="fr">
+        <meta charset="UTF-8" />
+        <title>Update Employee</title>
+  
+        <link href="{% static 'css/TaskManagment.css' %}" rel="stylesheet" />
+  
+        <link
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          rel="stylesheet"
+        />
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+
+        {% block stylesheets %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+<link href="{% static 'css/material-dashboard.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/material-dashboard.css.map' %}" rel="stylesheet" />
+  <link href="{% static 'css/material-dashboard.min.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/material-dashboard-rtl.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+
+
+ <!-- Bootstrap CSS -->
+ <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+ <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" />
+ <link href="{% static 'css/bootstrap.css.map' %}" rel="stylesheet" />
+ <link href="{% static 'css/bootstrap.min.css.map' %}" rel="stylesheet" />  
+ <link href="{% static 'css/bootstrap-grid.css' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-grid.css.map' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-grid.min.css' %}" rel="stylesheet" />  
+ <link href="{% static 'css/bootstrap-grid.min.css.map' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-reboot.css' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-reboot.css.map' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-reboot.min.css' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-reboot.min.css.map' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/demo.css' %}" rel="stylesheet" /> 
+ {% endblock stylesheets %}
+
+
+
+
+
+
+
+
+      </head>
+    
+
+
+
+<body>
+  {% block content %}
+
+
+<section>
+
+  <form
+  method="POST"
+  action=""
+  style="
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 90%;
+    max-width: 600px;
+    background: #f9f9f9; /* Fond clair */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 50px auto;
+  "
+>
+  {% csrf_token %}
+
+  <h1
+    style="
+      font-size: 28px;
+      font-family: Avantgarde, sans-serif;
+      color: white;
+      text-align: center;
+      background: #28a745; /* Vert professionnel */
+      padding: 10px 20px;
+      width: 100%;
+      border-radius: 5px 5px 0 0;
+      margin-bottom: 20px;
+    "
+  >
+    Update Employee
+  </h1>
+
+  <div style="width: 100%; margin-bottom: 15px;">
+    <label
+      for="EmployeeID"
+      style="
+        display: block;
+        font-family: Avantgarde, sans-serif;
+        font-size: 16px;
+        color: #333; /* Gris foncé */
+        margin-bottom: 5px;
+      "
+    >
+      Employee ID
+    </label>
+    <input
+      type="number"
+      id="EmployeeID"
+      name="EmployeeID"
+      placeholder="{{ employee.EmployeeID }}"
+      style="
+        width: 100%;
+        padding: 10px;
+        font-family: Avantgarde, sans-serif;
+        font-size: 14px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        outline: none;
+        background: #ffffff; /* Fond blanc */
+        transition: box-shadow 0.3s ease;
+      "
+      onfocus="this.style.boxShadow='0 0 5px #28a745'"
+      onblur="this.style.boxShadow='none'"
+    />
+  </div>
+
+  <div style="width: 100%; margin-bottom: 15px;">
+    <label
+      for="EmployeeName"
+      style="
+        display: block;
+        font-family: Avantgarde, sans-serif;
+        font-size: 16px;
+        color: #333; /* Gris foncé */
+        margin-bottom: 5px;
+      "
+    >
+      Employee Name
+    </label>
+    <input
+      type="text"
+      id="EmployeeName"
+      name="EmployeeName"
+      placeholder="Enter Employee Name"
+      style="
+        width: 100%;
+        padding: 10px;
+        font-family: Avantgarde, sans-serif;
+        font-size: 14px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        outline: none;
+        background: #ffffff; /* Fond blanc */
+        transition: box-shadow 0.3s ease;
+      "
+      onfocus="this.style.boxShadow='0 0 5px #28a745'"
+      onblur="this.style.boxShadow='none'"
+    />
+  </div>
+
+  <button
+    type="submit"
+    class="btn btn-primary"
+    style="
+      font-family: Avantgarde, sans-serif;
+      padding: 10px 20px;
+      background-color: #ff8800; /* Orange vif */
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 50%;
+    "
+    onmouseover="this.style.backgroundColor='#cc6f00'"
+    onmouseout="this.style.backgroundColor='#ff8800'"
+  >
+    VALIDATE
+  </button>
+</form>
+
+</section>
+
+
+{% endblock %}
+
+</body>

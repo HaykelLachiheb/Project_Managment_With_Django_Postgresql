@@ -1,0 +1,258 @@
+
+
+*body{
+    display: flex;
+    justify-content: space-around;
+   
+    
+}
+
+#SectionLogo{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: space-between;
+    
+    background-color: #2F3443;
+}
+
+.colorie {
+    background-color: #f39c12; /* Couleur de fond pour les sous-divs colorés */
+  }
+  .normal {
+    background-color: #ecf0f1; /* Couleur de fond pour les sous-divs normaux */
+  }
+
+
+#LastDiv{
+    width: 100px;
+    height: 90%;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+
+
+#WelcomeDiv{
+    width: 45%;
+    height: 20%;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+
+}
+
+#iconWelcome{
+    padding-top: 10px;
+}
+
+#WelcomeText{
+    padding-top: 10px;
+    padding-left: 7px;
+    width: 70%;
+    font-size: 20px;
+    font-family: cursive;
+}
+
+
+
+#LogoutDiv{
+    width: 100px;
+    height: 20%;
+    
+    margin-left: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+#iconLogout{
+    padding-top: 10px;
+}
+
+#LogoutText{
+    padding-top: 10px;
+    padding-left: 7px;
+    width: 70%;
+    font-size: 20px;
+    font-family: cursive;
+}
+
+
+
+
+
+
+#LogoDiv{
+    width: 98%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    padding: auto;
+    margin-top: 10px;
+}
+#LogoDiv h1{
+    color: #0099E1;
+    width: 185px;
+    height: 80%;
+    font-size: 35px;
+    font-family: cursive;
+    margin-top: 15px;
+    margin-left: 20px;
+}
+
+#LogoDiv div{
+    color: white;
+    width: 32%;
+    height: 70%;
+    
+}
+
+#LogoDiv div span{
+    color: white;
+}
+
+
+#LogoDiv span{
+    width: 225px;
+    height: 100%;
+    color: white;
+}
+
+#icon{
+    
+    
+    width: 40px;
+    height: 100%;
+    margin-top: 8px;
+}
+
+
+#Container{
+    width: 100%;
+    height: 80%;
+    
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+
+#SectionFull{
+    width: 100%;
+    height: 100%;
+    
+    float: right;
+    display: flex;
+    justify-content: space-between;
+    background-repeat: no-repeat;
+    box-shadow: 0 0 40px 0 rgba(2, 2, 36, 0.7);
+    
+    display: flex;
+    justify-content:space-around;
+    flex-wrap: wrap; 
+}
+
+#Tasks{
+    width: 20%;
+    height: 100%;
+    border: 1px solid red;
+    text-align: center;
+    background-color: #0F466D;
+    color: white;
+    margin-left: 30px;
+    border-radius: 55px;
+  
+}
+
+#Tasks h3{
+    width: 100%;
+    height: 93px;
+    padding-top: 30px;
+    font-family: cursive;
+}
+
+#TasksShow{
+    width: 100%;
+    height: 80%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#TasksShow div{
+    width: 100%;
+    height: 9%;
+    border: 1px solid red;
+    
+}
+
+
+
+
+#TasksShow div h3{
+    font-size: 20px;
+    padding-top: 5px;
+}
+
+
+
+
+#DaysOfTheMonth{
+    width: 75%;
+    height: 100%;
+    
+    text-align: center;
+    
+    display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#DaysOfTheMonth h3{
+    width: 99%;
+    height: 50px;
+    padding-top: 5px;
+    background-color: #0F466D;
+    color: white;
+    border-radius: 20px;
+    font-family: cursive;
+}
+
+.ListOfDays{
+    border: 1px solid red;
+}
+
+
+#ListOfDays{
+    width: 99%;
+    height: 7%;
+    
+    display: flex;
+    align-items: stretch;
+    background-color: #0F466D;
+    color: white;
+    font-family: cursive;
+}
+
+#ListOfDays div{
+    
+    padding-top: 7px;
+    width: 4%;
+   border-top: 1px solid #0F466D;
+   border-bottom: 1px solid #0F466D;
+    
+}
+
+
+
+
+
+
+

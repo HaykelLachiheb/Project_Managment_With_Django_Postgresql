@@ -1,0 +1,497 @@
+{% load static %}
+
+<DOCTYPE html>
+    <html lang="fr">
+        <meta charset="UTF-8" />
+        <title>Display & Search</title>
+  
+        <link href="{% static 'css/TaskManagment.css' %}" rel="stylesheet" />
+  
+        <link
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          rel="stylesheet"
+        />
+
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <style>
+        #message {
+            display: none; /* Caché par défaut */
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            width:80%;
+            margin-left : 10px;
+        }
+
+         #message2 {
+            display: none; /* Caché par défaut */
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            width:80%;
+            margin-left : 10px;
+        }
+
+         #message3 {
+            display: none; /* Caché par défaut */
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            width:80%;
+            margin-left : 10px;
+        }
+
+         #message4 {
+            display: none; /* Caché par défaut */
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            width:80%;
+            margin-left : 10px;
+        }
+
+
+
+
+
+
+
+
+
+
+    </style>
+
+
+
+      </head>
+    
+    
+
+
+    <body>
+        {% block content %}
+
+        <section id="ProjectDetails" style="height:10%">
+
+            <h3 id="DashboardTitle">
+                Display And Search
+            </h3>
+            <div id="DashboardLogo" style="width:55%;margin-top:3px">
+
+                <i id="icon" class="fas fa-cubes fa-2x me-3" style="color: #B91116;" ></i>
+                <span class="h1 fw-bold mb-0" style="color: white;">ChronoPlan</span>
+            </div>
+            <div id="DashboardText">
+
+                <h3 id="DashboardTitle2">
+                   
+                    
+
+                    <iframe name="date du jour" id="date-du-jour" style="width:150px;height:250px; font-family: cursive;" src="https://www.mathieuweb.fr/calendrier/date-jour-bleu.html" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
+                    
+                    
+                </h3>
+            </div>
+
+            <div id="WelcomeLogo" style="margin-top:20px;cursor:pointer;width:330px" onclick="window.location.href='{% url 'main' %}'">
+                <i id="iconWelcome" class="fa-regular fa-hand" style="color: white;"></i>
+                <h1 id="WelcomeText" style="color: white;font-weight: bold;padding-left: 5px;"class="text-success">Back To Main |</h1>
+
+            </div>
+
+            <div id="WelcomeLogo" style="width:370px;margin-top:20px">
+                <i id="iconWelcome" class="fa-regular fa-hand" style="color: white;"></i>
+                <h1 id="WelcomeText" style="color: white;font-weight: bold;padding-left: 5px;"class="text-success">Welcome, {{user.username}} |</h1>
+
+            </div>
+            
+            
+            <div id="LogOut" style="cursor: pointer;margin-top:20px"
+            onclick="window.location.href='{% url 'logout' %}'">
+                <i id="iconLogout" style="color: white;padding-top: 2px;" class="fa-solid fa-right-to-bracket"></i>
+                <h1 id="Text" style="color: white; width: 90px;height: 50px;font-size: 20px;font-family: cursive;padding-left: 5px;font-weight: bold;" >Log Out</h1>
+
+
+            
+
+
+
+
+
+            <div></div>
+
+
+ 
+        </section>
+
+
+        <section id="MainSection" style="margin:auto;margin-top:150px;width:90%;height:auto;display:flex;flex-wrap:wrap">
+          
+          
+           
+            <div id="FirstDiv" style="background:#008CE3;width:45%;height:50px;border:1px solid blue;margin:auto;text-align:center">
+
+                <div class="form-check form-check-inline" style="margin-top:10px;">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" >
+                    <label class="form-check-label" for="inlineRadio1" style="color:white">Search</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                    <label class="form-check-label" for="inlineRadio2" style="color:white">Display</label>
+                </div>
+                  
+
+            </div> 
+          
+          
+            <div style="display:flex;justify-content:space-between;width:100%;margin-top:20px">
+                    <div id="BoxLeft" style="background:#008CE3;width:45%;height:50px;border:1px solid blue;">
+                       
+                      
+                        <div class="form-check" style="margin:auto;width:20%;height:20px;margin-top:3px;padding-left:0px">
+                            <input  type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label  class="form-check-label" for="exampleCheck1"style="color:white;width:150%">Search For Task</label>
+                        </div>
+
+                        <div class="form-check" style="margin:auto;width:20%;height:20px;padding-left:0px">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck2">
+                            <label class="form-check-label" for="exampleCheck2" style="color:white;width:190%">Search For Employee</label>
+                        </div>
+
+                    </div> 
+
+                <div id="MyDiv" style="background:#008CE3;width:45%;height:50px;border:1px solid blue">
+
+
+                    <div class="form-check" style="margin:auto;width:22%;height:20px;margin-top:3px">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck3">
+                        <label class="form-check-label" for="exampleCheck3" style="color:white;width:150%">Display Tasks</label>
+                    </div>
+
+                    <div class="form-check" style="margin:auto;width:22%;height:20px;">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck4">
+                        <label class="form-check-label" for="exampleCheck4" style="color:white;width:160%">Display Employees</label>
+                    </div>
+
+                </div> 
+            </div>
+
+
+            <button   id="ChooseBtn" type="submit" class="btn btn-primary" style="width:100px;height:50px;margin-left:532px;margin-top:20px">Validate</button>
+
+
+              
+
+        </section>    
+
+
+        <div id="LastDiv" style="display:none;width:80%;height:100px;border:1px solid red;margin:auto;margin-top:70px">
+            <div id="Header" class="card-header">
+                <ul class="nav nav-pills card-header-pills">
+                  <li class="nav-item" style="width:100%">
+                    <a class="nav-link active" href="#" style="font-family:fantasy;font-weight:bold;color:#2F3443">Showing Details</a>
+                  </li>
+                  
+                </ul>
+            </div>
+
+            
+          
+
+            <div id="message">Search For Task</div>
+
+
+                <form method="POST" action="{% url 'fetch_task'  %}" style="display:flex;justify-content:space-around;flex-wrap:wrap; width:100%;height:200px">
+                    {% csrf_token %}
+
+                    <div style="width:100%;margin:auto;margin-left:20%" >
+                            <label style="width:35%;font-size:18px" for="TaskID">TaskID </label>
+                            <input  style="width:35%" type="number" id="TaskID" name="TaskID">
+                            
+                        
+                    </div>
+
+                    <div id="GroupeBtn" style="width:100%;display:flex:justify-content:space-between;margin:auto;margin-top:15px;margin-left:30%">
+                        <button type="submit" class="btn btn-primary"  style="height:40px;width:100px;color:white;font-weight:bold">VALIDATE</button>
+                    
+                    </div>    
+                </form>
+
+
+
+            </div>
+
+
+            <div id="message2" style="width:50%;margin:auto;margin-top:100px">
+                <div id="Header" class="card-header">
+                    <ul class="nav nav-pills card-header-pills">
+                      <li class="nav-item" style="width:100%">
+                        <a class="nav-link active" href="#" style="font-family:fantasy;font-weight:bold;color:#2F3443">Showing Details</a>
+                      </li>
+                      
+                    </ul>
+                </div>
+                <h3 style="font-size:20px;margin-left:15px">Search For Employee</h3>
+
+                <form method="POST" action="{% url 'fetch_employee'  %}" style="display:flex;justify-content:space-around;flex-wrap:wrap; width:100%;height:200px">
+                    {% csrf_token %}
+    
+                    <div style="width:100%;margin:auto;margin-left:30%" >
+                            <label style="width:15%;font-size:18px" for="EmployeeID">EmployeeID </label>
+                            <input  style="width:35%;margin-left:35px" type="number" id="EmployeeID" name="EmployeeID">
+                            
+                          
+                    </div>
+    
+                    <div id="GroupeBtn" style="width:100%;display:flex:justify-content:space-between;margin:auto;margin-top:15px;margin-left:40%">
+                        <button type="submit" class="btn btn-primary"  style="height:40px;width:100px;color:white;font-weight:bold">VALIDATE</button>
+                     
+                    </div>    
+                </form>
+
+
+            </div>
+
+
+            <div id="message3" style="width:50%;margin:auto;margin-top:100px">
+                
+                <div id="Header" class="card-header">
+                    <ul class="nav nav-pills card-header-pills">
+                      <li class="nav-item" style="width:100%">
+                        <a class="nav-link active" href="#" style="font-family:fantasy;font-weight:bold;color:#2F3443">Showing Details</a>
+                      </li>
+                      
+                    </ul>
+                </div>
+                <h3 style="font-size:20px;margin-left:15px">Display Tasks</h3>      
+                
+              
+                <form method="POST" action="{% url 'task_list'  %}" style="display:flex;justify-content:space-around;flex-wrap:wrap; width:100%;height:200px">
+                    {% csrf_token %}
+    
+                   
+    
+                    <div id="GroupeBtn" style="width:100%;display:flex:justify-content:space-between;margin:auto;margin-top:15px;margin-left:40%">
+                        <button type="submit" class="btn btn-primary"  style="height:40px;width:100px;color:white;font-weight:bold">VALIDATE</button>
+                     
+                    </div>    
+                </form>
+                
+
+            
+
+
+
+
+
+
+
+            </div>
+            <div id="message4" style="width:50%;margin:auto;margin-top:100px">
+                
+                <div id="Header" class="card-header">
+                    <ul class="nav nav-pills card-header-pills">
+                      <li class="nav-item" style="width:100%">
+                        <a class="nav-link active" href="#" style="font-family:fantasy;font-weight:bold;color:#2F3443">Showing Details</a>
+                      </li>
+                      
+                    </ul>
+                </div>
+                
+                <h3 style="font-size:20px;margin-left:15px">Display Employees</h3>
+            
+                <form method="POST" action="{% url 'employee_list'  %}" style="display:flex;justify-content:space-around;flex-wrap:wrap; width:100%;height:200px">
+                    {% csrf_token %}
+    
+                   
+    
+                    <div id="GroupeBtn" style="width:100%;display:flex:justify-content:space-between;margin:auto;margin-top:15px;margin-left:40%">
+                        <button type="submit" class="btn btn-primary"  style="height:40px;width:100px;color:white;font-weight:bold">VALIDATE</button>
+                     
+                    </div>    
+                </form>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            </div>
+
+
+            
+
+             
+
+       
+
+        </div>
+        
+        
+          {% endblock %}
+
+        <script>
+          src = "{% static 'https://kit.fontawesome.com/3d9ffd68dd.js' %}";
+          crossorigin = "anonymous";
+        </script>
+  
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+          crossorigin="anonymous"
+        ></script>
+        <script
+          src="https://kit.fontawesome.com/3d9ffd68dd.js"
+          crossorigin="anonymous"
+        ></script>
+        <script src="{% static 'js/script.js' %}"></script>
+        
+        <script>
+
+document.getElementById("ChooseBtn").addEventListener("click", function() {
+document.getElementById("MainSection").style.display = "none";
+document.getElementById("Header").style.display = "block";
+document.getElementById("LastDiv").style.display = "block";
+;      
+                
+                
+               
+
+
+const div = document.getElementById("LastDiv");
+let width = 50; // largeur initiale
+let height = 50; // hauteur initiale
+
+    // Fonction pour agrandir progressivement le div
+const growDiv = () => {
+      const interval = setInterval(() => {
+        width += 15; // augmente la largeur
+        height += 15; // augmente la hauteur
+        div.style.width = width + "px";
+        div.style.height = height + "px";
+
+        // Arrêter l'animation après une certaine taille
+        if (width >= 600 || height >= 300) {
+          clearInterval(interval);
+        }
+      }, 60); // intervalle de 100ms
+};
+
+    // Lancer l'agrandissement après 1 seconde
+    setTimeout(growDiv, 20);
+
+
+
+            });
+
+ 
+     
+        // Récupération des éléments
+const inlineRadio1 = document.getElementById('inlineRadio1');
+const inlineRadio2 = document.getElementById('inlineRadio2');
+const boxLeft = document.getElementById('BoxLeft');
+const MyDiv = document.getElementById('MyDiv');
+const ChooseBtn = document.getElementById('ChooseBtn');
+
+    document.getElementById('inlineRadio1').addEventListener('change', function () {
+      const box = document.getElementById('MyDiv');
+      if (this.checked) {
+        box.style.display = 'none';
+        boxLeft.style.margin="auto";
+      }
+    });
+
+    // Pour réafficher BoxLeft si un autre bouton radio est sélectionné :
+    document.getElementById('inlineRadio2').addEventListener('change', function () {
+      const box = document.getElementById('MyDiv');
+     
+      box.style.display = 'block';
+      ChooseBtn.style.margin='auto';
+      ChooseBtn.style.marginTop='20px';
+      
+    });
+
+
+
+    document.getElementById('inlineRadio2').addEventListener('change', function () {
+      const box2 = document.getElementById('BoxLeft');
+      const box3 = document.getElementById('MyDiv');
+      const ChooseBtn = document.getElementById('ChooseBtn');
+      if (this.checked) {
+        box2.style.display = 'none';
+        box3.style.margin='auto';
+        
+          
+      }
+       
+    });
+
+    // Pour réafficher BoxLeft si un autre bouton radio est sélectionné :
+    document.getElementById('inlineRadio1').addEventListener('change', function () {
+      const box2 = document.getElementById('BoxLeft');
+      box2.style.display = 'block';
+    });
+
+
+    
+const checkbox = document.getElementById('exampleCheck1');
+const messageDiv = document.getElementById('message');
+
+        checkbox.addEventListener('change', function () {
+            // Affiche ou cache le contenu en fonction de l'état de la checkbox
+            messageDiv.style.display = this.checked ? 'block' : 'none';
+        });
+
+const checkbox2 = document.getElementById('exampleCheck2');
+const messageDiv2 = document.getElementById('message2');
+const MainSection = document.getElementById('MainSection');
+
+        checkbox2.addEventListener('change', function () {
+            // Affiche ou cache le contenu en fonction de l'état de la checkbox
+            messageDiv2.style.display = this.checked ? 'block' : 'none';
+            
+            MainSection.style.display='none';
+            
+        });
+
+const checkbox3 = document.getElementById('exampleCheck3');
+const messageDiv3 = document.getElementById('message3');
+
+
+        checkbox3.addEventListener('change', function () {
+            // Affiche ou cache le contenu en fonction de l'état de la checkbox
+            messageDiv3.style.display = this.checked ? 'block' : 'none';
+            ChooseBtn.style.display='none';
+            MainSection.style.display='none';
+        });
+
+
+
+const checkbox4 = document.getElementById('exampleCheck4');
+const messageDiv4 = document.getElementById('message4');
+
+        checkbox4.addEventListener('change', function () {
+            // Affiche ou cache le contenu en fonction de l'état de la checkbox
+            messageDiv4.style.display = this.checked ? 'block' : 'none';
+            ChooseBtn.style.display='none';
+            MainSection.style.display='none';
+        });
+   
+
+
+
+        </script>
+
+
+
+    </body>
+    
+    
+    </html>

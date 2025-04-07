@@ -1,0 +1,115 @@
+{% load static %}
+
+<DOCTYPE html>
+    <html lang="fr">
+        <meta charset="UTF-8" />
+        <title>Employees Details</title>
+  
+        <link href="{% static 'css/TaskManagment.css' %}" rel="stylesheet" />
+  
+        <link
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          rel="stylesheet"
+        />
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+      </head>
+    
+
+
+
+  <body>
+    {% block content %}
+
+    <section id="ProjectDetails" style="height:10%;background:#2F3443">
+    
+      <h3 id="DashboardTitle">
+          Employees Details
+      </h3>
+      <div id="DashboardLogo" style="width:55%;margin-top:3px">
+    
+          <i id="icon" class="fas fa-cubes fa-2x me-3" style="color: #B91116;" ></i>
+          <span class="h1 fw-bold mb-0" style="color: white;">ChronoPlan</span>
+      </div>
+      <div id="DashboardText">
+    
+          <h3 id="DashboardTitle2">
+             
+              
+    
+              <iframe name="date du jour" id="date-du-jour" style="width:150px;height:250px; font-family: cursive;" src="https://www.mathieuweb.fr/calendrier/date-jour-bleu.html" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
+              
+              
+          </h3>
+      </div>
+    
+      <div id="WelcomeLogo" style="margin-top:20px;cursor:pointer;width:330px" onclick="window.location.href='{% url 'main' %}'">
+          <i id="iconWelcome" class="fa-regular fa-hand" style="color: white;"></i>
+          <h1 id="WelcomeText" style="color: white;font-weight: bold;padding-left: 5px;"class="text-success">Back To Main |</h1>
+    
+      </div>
+    
+      <div id="WelcomeLogo" style="width:370px;margin-top:20px">
+          <i id="iconWelcome" class="fa-regular fa-hand" style="color: white;"></i>
+          <h1 id="WelcomeText" style="color: white;font-weight: bold;padding-left: 5px;"class="text-success">Welcome, {{user.username}} |</h1>
+    
+      </div>
+      
+      
+      <div id="LogOut" style="cursor: pointer;margin-top:20px"
+      onclick="window.location.href='{% url 'logout' %}'">
+          <i id="iconLogout" style="color: white;padding-top: 2px;" class="fa-solid fa-right-to-bracket"></i>
+          <h1 id="Text" style="color: white; width: 90px;height: 50px;font-size: 20px;font-family: cursive;padding-left: 5px;font-weight: bold;" >Log Out</h1>
+    
+    
+      
+    
+    
+    
+    
+    
+      <div></div>
+    
+    
+    
+    </section>
+
+    <section>
+
+
+
+      <span class="badge badge-info" style="color:white;background:#16899b;width:100%;height:50px;margin-top:20px;font-size:35px">Employees List {{employees_total}}</span>
+    <table border="1" style="text-align:center ;margin:auto;width:80%;margin-top:50px;background:#007BFF" >
+      <thead>
+        <tr style="background:#007BFF">
+          <th style="height:50px;background:#007BFF;color:white;border:1px solid white">EmployeeID</th>
+          <th style="background:#007BFF;color:white;border:1px solid white">EmployeeName</th>
+          <th style="background:#007BFF;color:white;border:1px solid white">List Of Tasks</th>
+         
+        </tr>
+      </thead>
+      <tbody>
+        {% for employee in employees %}
+        <tr>
+          <td style="background:grey;color:white;font-size:25px">{{ employee.EmployeeID }}</td>
+          <td style="background:grey;color:white;font-size:25px">{{ employee.EmployeeName }}</td>
+          <td style="background:grey;color:white;font-size:25px;display:flex;flex-wrap:wrap;" >
+            
+            <ul style="display: flex;
+               flex-direction: column;width:100%;background:grey">
+              {% for task in employee.List_Tasks %}
+              <button style="border-bottom-left-radius: 25px;border-top-right-radius: 25px;;padding-top:5px; padding-bottom:5px;padding-left:15px;width:100%;text-align:left;margin-top:5px;border:1px solid white;" type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+                {{ task }}
+              </button>
+                 
+              {% endfor %}
+             </ul>
+          
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</section>
+
+{% endblock %}
+  </body>
+</html>

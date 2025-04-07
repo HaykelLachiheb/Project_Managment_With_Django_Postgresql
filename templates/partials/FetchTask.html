@@ -1,0 +1,320 @@
+
+{% extends "partials/base.html" %}
+{% load static %}
+
+<DOCTYPE html>
+    <html lang="fr">
+        <meta charset="UTF-8" />
+        <title>Fetch Task</title>
+  
+        <link href="{% static 'css/TaskManagment.css' %}" rel="stylesheet" />
+        
+       
+        {% block stylesheets %}
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+        <link href="{% static 'css/material-dashboard.css' %}" rel="stylesheet" />
+          <link href="{% static 'css/material-dashboard.css.map' %}" rel="stylesheet" />
+          <link href="{% static 'css/material-dashboard.min.css' %}" rel="stylesheet" />
+          <link href="{% static 'css/material-dashboard-rtl.css' %}" rel="stylesheet" />
+          <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+        
+        
+         <!-- Bootstrap CSS -->
+         <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+         <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" />
+         <link href="{% static 'css/bootstrap.css.map' %}" rel="stylesheet" />
+         <link href="{% static 'css/bootstrap.min.css.map' %}" rel="stylesheet" />  
+         <link href="{% static 'css/bootstrap-grid.css' %}" rel="stylesheet" /> 
+         <link href="{% static 'css/bootstrap-grid.css.map' %}" rel="stylesheet" /> 
+         <link href="{% static 'css/bootstrap-grid.min.css' %}" rel="stylesheet" />  
+         <link href="{% static 'css/bootstrap-grid.min.css.map' %}" rel="stylesheet" /> 
+         <link href="{% static 'css/bootstrap-reboot.css' %}" rel="stylesheet" /> 
+         <link href="{% static 'css/bootstrap-reboot.css.map' %}" rel="stylesheet" /> 
+         <link href="{% static 'css/bootstrap-reboot.min.css' %}" rel="stylesheet" /> 
+         <link href="{% static 'css/bootstrap-reboot.min.css.map' %}" rel="stylesheet" /> 
+         <link href="{% static 'css/demo.css' %}" rel="stylesheet" /> 
+         {% endblock stylesheets %}
+
+
+         <style>
+
+          /* Conteneur principal */
+          .task-container {
+            background-color: #F9FAFB;
+            font-family: Avantgarde;
+          }
+          
+          /* Cartes générales */
+          .card {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            font-family: Avantgarde;
+          }
+          
+          /* En-têtes des cartes */
+          .card-header {
+            font-size: 20px;
+            font-weight: bold;
+          }
+          
+          /* Liste des détails */
+          .list-unstyled li {
+            font-size: 14px;
+            margin-bottom: 8px;
+            line-height: 1.5;
+          }
+          
+          /* Champs de formulaire */
+          .form-label {
+            font-weight: 600;
+          }
+          
+          .form-control,
+          .form-select {
+            border-radius: 8px;
+            box-shadow: none;
+            margin-bottom: 10px;
+          }
+          
+          .form-control:focus,
+          .form-select:focus {
+            border-color: #2563EB;
+            box-shadow: 0 0 5px rgba(37, 99, 235, 0.5);
+          }
+          
+          /* Bouton de validation */
+          .btn-success {
+            background-color: #22C55E;
+            border: none;
+            font-weight: bold;
+          }
+          
+          .btn-success:hover {
+            background-color: #16A34A;
+          }
+          
+
+          .form-select {
+            background-color: #f0f0f0;
+            border: 2px solid #007bff;
+            border-radius: 8px;
+            padding: 10px;
+            font-size: 1rem;
+            color: #333;
+          }
+        
+          .form-select:focus {
+            border-color: #0056b3;
+            outline: none;
+          }
+        
+          .form-select option {
+            background-color: #fff;
+            color: #333;
+          }
+        
+          .form-select option:checked {
+            background-color: #007bff;
+            color: white;
+          }
+          
+
+
+
+         </style> 
+        
+        
+
+      </head>
+      
+    
+
+
+
+<body>
+  {% block content %}
+
+
+
+
+<!-- Section: Design Block -->
+<section class="task-container py-5">
+  <div class="container" style='margin-top:-127px'>
+
+   
+    
+
+    <!-- Carte Mise à Jour de la Tâche -->
+    <div class="card task-update shadow rounded" style="height:480px;margin-top:120px">
+      <div class="card-header bg-success text-white text-center py-3">
+        <h4 class="mb-0 icon-white" style="font-family: Avantgarde">⚙️ Update Task <li style="font-size:18px;margin-top:10px">🆔 Task ID: {{ task.TaskID }}</li></h4>
+      </div>
+      <div class="card-body" style="font-family: Avantgarde">
+
+        {% if messages %}
+  <div style="margin-top:115px">
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">
+        {{ message }}
+      </div>
+    {% endfor %}
+  </div>
+
+  {% else %}
+  <a href="#" class="btn btn-primary" style="width:425px;padding-top:12px;margin-left:25%">{{ success_message }}</a>  
+    
+   </span>
+{% endif %}
+
+
+
+<form method="POST" action="{% url 'update_task' %}" style="margin-top:50px">
+  {% csrf_token %}
+  
+  <div class="row">
+    <div class="col-md-6 mb-3" style="display:flex;justify-content:space-between">
+      <label for="TaskID" class="form-label" style="margin-top:8px">👤 Task ID</label>
+      <input style="width:55%" type="number" id="TaskID" name="TaskID" class="form-control" min="1" required placeholder="{{ task.TaskID }}" />
+    </div>
+
+    <div class="col-md-6 mb-3" >
+      <label for="Responsible" class="form-label"style="margin-top:8px" >👤 Responsible</label>
+      <select id="Responsible" name="Responsible" class="form-select" required placeholder="{{ task.Responsible }}">
+        {% for employee in employees %}
+          <option value="{{ employee.EmployeeName }}" {% if task.Responsible == employee.EmployeeName %}selected{% endif %}>
+            {{ employee.EmployeeName }}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-3" style="display:flex;justify-content:space-between">
+      <label for="TaskDaysAllowed" class="form-label" style="margin-top:8px">📅 Task Days Allowed</label>
+      <input style="width:55%" type="number" id="TaskDaysAllowed" name="TaskDaysAllowed" class="form-control" min="1" required placeholder="{{ task.TaskDaysAllowed }}" />
+    </div>
+
+    <div class="col-md-6 mb-3" style="display:flex;justify-content:space-between">
+      <label for="StartingDay" class="form-label" style="margin-top:8px">📆 Starting Day ( Date Saved : {{ task.StartingDay }})</label>
+      <input style="width:87%" type="date" id="StartingDay" name="StartingDay" class="form-control" required />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-3" style="display:flex;justify-content:space-between">
+      <label for="TaskDaysWorked" class="form-label" style="margin-top:8px">📆 Task Days Worked</label>
+      <input style="width:55%" type="number" id="TaskDaysWorked" name="TaskDaysWorked" class="form-control" min="1" required disabled />
+    </div>
+
+    <div class="col-md-6 mb-3" style="display:flex;justify-content:space-between" >
+      <label for="TaskDesc" class="form-label" style="margin-top:8px">📝 Task Description</label>
+      <input style="width:55%" type="text" id="TaskDesc" name="TaskDesc" class="form-control" pattern="[A-Za-zÀ-ÿ ]+" required placeholder="{{ task.TaskDesc }}" />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label for="State" class="form-label">📊 State ( Last Saved : {{ task.State }} )</label>
+      <select id="State" name="State" class="form-select" required placeholder="{{ task.State }}">
+        <option value="Assigned">Assigned</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Completed">Completed</option>
+        <option value="In Review">In Review</option>
+        <option value="Overdue">Overdue</option>
+      </select>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <div class="text-center mt-4" style="font-family: Avantgarde">
+        <button type="submit" class="btn btn-success px-4">Update Task</button>
+      </div>
+    </div>
+  </div>
+</form>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+<script>
+  function validateForm() {
+      const taskDaysAllowed = document.getElementById('TaskDaysAllowed').value;
+      const taskDesc = document.getElementById('TaskDesc').value;
+
+      if (taskDaysAllowed <= 0) {
+          alert('TaskDaysAllowed must be a positive number.');
+          return false;
+      }
+
+      if (!/^[A-Za-zÀ-ÿ ]+$/.test(taskDesc)) {
+          alert('TaskDesc must contain only letters.');
+          return false;
+      }
+
+      return true;
+  }
+</script>
+
+{% block javascripts %}
+
+<script>
+  document.getElementById('StartingDay').addEventListener('change', function () {
+      const startingDay = new Date(this.value);
+      const today = new Date();
+      const yesterday = new Date(today);
+      yesterday.setDate(today.getDate() - 1); // Calcul de la date d'hier
+
+      const taskDaysAllowed = parseInt(document.getElementById('TaskDaysAllowed').value, 10); // Récupère la valeur de TaskDaysAllowed
+
+      if (!isNaN(startingDay)) {
+          const differenceInTime = today - startingDay;
+          const differenceInDays = Math.floor(differenceInTime / (1000 * 60 * 60 * 24));
+
+          if (differenceInDays > taskDaysAllowed) {
+              // Si TaskDaysWorked dépasse TaskDaysAllowed, afficher un message d'erreur
+              const maxDate = new Date(yesterday);
+              maxDate.setDate(yesterday.getDate() - taskDaysAllowed); // Calcul de la date maximale (hier - TaskDaysAllowed)
+              alert(`Error : The number of Worked Days should not exceed ${taskDaysAllowed} days. The maximum Autorised Date : ${maxDate.toLocaleDateString()} (Yesterday - ${taskDaysAllowed} Days).`);
+              document.getElementById('TaskDaysWorked').value = taskDaysAllowed; // Limite la valeur à TaskDaysAllowed
+          } else {
+              // Sinon, mettre à jour TaskDaysWorked avec le nombre de jours
+              document.getElementById('TaskDaysWorked').value = differenceInDays >= 0 ? differenceInDays : 0;
+          }
+      } else {
+          document.getElementById('TaskDaysWorked').value = '';
+      }
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock javascripts %}
+
+
+</body>

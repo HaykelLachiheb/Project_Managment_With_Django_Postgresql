@@ -1,0 +1,159 @@
+  
+ {% load static %} 
+
+
+
+
+<body>
+
+ {% block content %}
+  
+  <div class="sidebar" style="margin-top: 55px;" data-color="purple" data-background-color="white;" data-image="{% static 'images/sidebar-1.jpg' %}">
+     
+                      <div class="sidebar-wrapper">
+                        <ul class="nav">
+                        {% if request.user.is_authenticated %}
+
+                        <li id="nav_dashboard" class="nav-item {% if request.resolver_match.url_name == 'index' %} active {% endif %}" style="width:100%;margin:auto;color:#444F5F">
+                          <a class="nav-link" href="/">
+                              <i class="material-icons" style="margin-right:6px">dashboard</i>
+                              <p style="font-family: Avantgarde;">Dashboard</p>
+                          </a>
+                      </li>
+
+                     
+
+
+                      
+                        <li  onclick="navigateToPage('http://127.0.0.1:8000/PageUser')"  id="nav_UserProfile" class="nav-item {% if request.resolver_match.url_name == 'page_user' %} active {% endif %}">
+                          <a class="nav-link" href="{% url 'page_user' %}">
+                            <i class="material-icons" style="margin-right:6px">person</i>
+                            <p style="font-family: Avantgarde;">User Profile</p>
+                          </a>
+                        </li>
+                        <li id="nav_TasksList" class="nav-item {% if request.resolver_match.url_name == 'display_tasks' %} active {% endif %}">
+                          <a class="nav-link" href="{% url 'display_tasks' %}">
+                            <i class="material-icons" style="margin-right:6px">list</i>
+                            <p style="font-family: Avantgarde;">Tasks List</p>
+                          </a>
+                        </li>
+                        <li id="nav_EmployeesList" class="nav-item {% if request.resolver_match.url_name == 'employee_list' %} active {% endif %}">
+                          <a class="nav-link" href="{% url 'employee_list' %}">
+                            <i class="material-icons" style="margin-right:6px">menu</i>
+                            <p style="font-family: Avantgarde;">Employees List</p>
+                          </a>
+                        </li>
+                        <li id="nav_Task" class="nav-item {% if request.resolver_match.url_name == 'Add_Task' %} active {% endif %}">
+                          <a class="nav-link" href="{% url 'Add_Task' %}">
+                            <i class="material-icons" style="margin-right:6px">assignment</i>
+                            <p style="font-family: Avantgarde;">Tasks Managment</p>
+                          </a>
+                        </li>
+                        <li id="nav_EmployeeManagment" class="nav-item {% if request.resolver_match.url_name == 'AddEmployee' %} active {% endif %}">
+                          <a class="nav-link" href="{% url 'AddEmployee' %}">
+                            <i class="material-icons" style="margin-right:6px">assignment</i>
+                            <p style="font-family: Avantgarde;">Employees Managment</p>
+                          </a>
+                        </li>
+
+                        <li id="nav_Clendar" class="nav-item {% if request.resolver_match.url_name == 'calendar_view' %} active {% endif %}">
+                          <a class="nav-link" href="{% url 'calendar' %}">
+                            <i class="material-icons" style="margin-right:6px">calendar_today</i>
+
+                            <p style="font-family: Avantgarde;padding-top:5px">Tasks calendar</p>
+                          </a>
+                        </li>
+
+                        <li id="nav_Billing" class="nav-item {% if request.resolver_match.url_name == 'Billing' %} active {% endif %}">
+                          <a class="nav-link" href="{% url 'Billing' %}">
+                            <i class="material-icons" style="margin-right:6px">Billing</i>
+                            <p style="font-family: Avantgarde;padding-top:5px">Invoices</p>
+                          </a>
+                        </li>
+                        
+
+
+                        <li id="nav_Logout" class="nav-item {% if request.resolver_match.url_name == 'logout_view' %} active {% endif %}">
+                          <a class="nav-link" href="{% url 'logout' %}">
+                            <i class="material-icons" style="margin-right:6px">Logout</i>
+                            <p style="font-family: Avantgarde;padding-top:5px">Logout</p>
+                          </a>
+                        </li>
+                         
+
+
+
+                        {% else %}
+
+
+                        <li class="nav-item {% if 'Login' in segment %} active {% endif %}">
+
+                          <a class="nav-link" href="Login">
+                            <i class="material-icons">Login</i>
+                            <p>Login</p>
+                          </a>
+                        </li>
+
+
+
+                        
+                        {% endif %}
+                        </ul>
+                      </div>
+
+                    </div>
+
+                    {% endblock content %}
+
+
+                    <script defer>
+                      document.addEventListener('DOMContentLoaded', () => {
+                          const navItems = document.querySelectorAll('.nav-item');
+                          const dashboardNav = document.getElementById('nav_dashboard');
+                      
+                          navItems.forEach(item => {
+                              item.addEventListener('click', () => {
+                                  // Retirer la classe active de tous les éléments
+                                  navItems.forEach(nav => nav.classList.remove('active'));
+                                  
+                                  // Ajouter la classe active à l'élément cliqué
+                                  item.classList.add('active');
+                                  
+                                  // Désactiver explicitement le Dashboard si ce n'est pas l'élément cliqué
+                                  if (item !== dashboardNav) {
+                                      dashboardNav.classList.remove('active');
+                                  }
+                              });
+                          });
+                      
+                          // S'assurer que l'élément correspondant à la page actuelle est actif au chargement
+                          const currentUrl = window.location.pathname;
+                          navItems.forEach(item => {
+                              const link = item.querySelector('a');
+                              if (link && link.getAttribute('href') === currentUrl) {
+                                  item.classList.add('active');
+                                  // Si l'élément actif n'est pas le dashboard, retirer la classe active du dashboard
+                                  if (item !== dashboardNav) {
+                                      dashboardNav.classList.remove('active');
+                                  }
+                              }
+                          });
+                      });
+                  </script>
+
+                 
+                  
+
+                      
+                    </body>
+
+
+
+                  
+
+    
+
+
+  
+
+      

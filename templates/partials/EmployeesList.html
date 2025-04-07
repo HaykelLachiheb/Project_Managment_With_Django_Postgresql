@@ -1,0 +1,231 @@
+{% extends "partials/base.html" %}
+{% load static %}
+<head>
+  <!-- Lien CDN pour FontAwesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+{% block title %} Employees List {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+
+{% block stylesheets %}
+
+<style>
+  /* Global Styling */
+  body {
+    background-color: #f4f6f9;
+    font-family: Avantgarde;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .main-card {
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+  }
+  
+  .card-header {
+    background: linear-gradient(135deg, #2980B9, #6DD5FA);
+    color: #ffffff;
+    padding: 30px;
+    border-radius: 15px 15px 0 0;
+    height:50px;
+  }
+  
+  .card-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    
+  }
+  
+  .employee-card {
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #6fb1fc, #f4c2c2);
+  }
+  
+  .employee-card:hover {
+    transform: translateY(-10px);
+  }
+  
+  .task-list {
+    padding: 0;
+    list-style: none;
+  }
+  
+  .task-item {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  .task-details {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    background: #eaf7fc;
+    border-radius: 10px;
+  }
+  
+  .toggle-task-details {
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .toggle-task-details:hover {
+    background-color: #3498db;
+    color: #ffffff;
+  }
+  
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .task-item .task-details p {
+    margin: 0.3rem 0;
+  }
+  
+  .btn {
+    cursor: pointer;
+  }
+
+  .logo{
+    height:175px important;
+  }
+  
+  
+</style>
+
+<link href="{% static 'css/material-dashboard.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/material-dashboard.css.map' %}" rel="stylesheet" />
+  <link href="{% static 'css/material-dashboard.min.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/material-dashboard-rtl.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+
+
+ <!-- Bootstrap CSS -->
+ <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+ <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" />
+ <link href="{% static 'css/bootstrap.css.map' %}" rel="stylesheet" />
+ <link href="{% static 'css/bootstrap.min.css.map' %}" rel="stylesheet" />  
+ <link href="{% static 'css/bootstrap-grid.css' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-grid.css.map' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-grid.min.css' %}" rel="stylesheet" />  
+ <link href="{% static 'css/bootstrap-grid.min.css.map' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-reboot.css' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-reboot.css.map' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-reboot.min.css' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-reboot.min.css.map' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/demo.css' %}" rel="stylesheet" /> 
+ <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+ {% endblock stylesheets %}
+
+
+
+</head>
+
+
+
+
+
+
+
+
+
+{% block content %}
+
+<div class="row" >
+  <div class="col-md-12">
+    <div id="MainCard" class="MainCard" style="border-radius: 20px; box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1); background-color: #ffffff; margin-top: 35px;">
+      
+      <!-- Header Section -->
+      <div class="card-header text-center" style="background-color: #3498DB; color: white; height: 100px; border-radius: 20px 20px 0 0;margin-top:38px">
+        <h4 style="font-family: 'Poppins', sans-serif; font-size: 2.2rem; font-weight: 600; margin: 0;">Employees List</h4>
+        <p style="font-family: 'Poppins', sans-serif; font-size: 1.1rem; margin: 10px 0 0;">
+          Total Employees: <strong style="color: #F1C40F;">{{ employees|length }}</strong> | Total Tasks: <strong style="color: #F1C40F;">{{ total_tasks }}</strong>
+        </p>
+      </div>
+
+      <!-- Main Content Section -->
+      <div class="card-body" style="padding: 25px; background-color: #F8FAFC;">
+        <div class="container-fluid">
+          {% if employees_with_tasks %}
+          <div class="row">
+            {% for employee_with_tasks in employees_with_tasks %}
+            <div class="col-lg-4 col-md-6" style="margin-bottom: 25px;">
+              <div class="employee-card" style="border: 1px solid #E0E0E0; border-radius: 15px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); overflow: hidden; transition: transform 0.3s;">
+                <div class="employee-header text-center" style="background-color: #2C3E50; color: white; padding: 20px;">
+                  <h5 style="font-family: 'Poppins', sans-serif; font-size: 1.6rem; margin: 0;">{{ employee_with_tasks.employee.EmployeeName }}</h5>
+                  <p style="font-family: 'Poppins', sans-serif; font-size: 1rem; margin: 5px 0 0;">ID: {{ employee_with_tasks.employee.EmployeeID }}</p>
+                </div>
+                <div class="employee-body" style="padding: 15px 20px; text-align: center; background-color: white;">
+                  <p style="font-family: 'Poppins', sans-serif; font-size: 1rem; color: #7F8C8D;">Assigned Tasks: 
+                    <strong style="color: #3498DB;">{{ employee_with_tasks.tasks|length }}</strong>
+                  </p>
+                  <button class="btn btn-outline-primary show-tasks-btn" 
+                          style="width: 100%; margin-top: 15px; padding: 10px; font-size: 1rem; font-weight: 500;" 
+                          data-employee-id="{{ employee_with_tasks.employee.EmployeeID }}">
+                    Show Tasks
+                  </button>
+                  <div class="task-details text-left" style="display: none; margin-top: 15px;">
+                    <ul class="task-list" style="list-style: none; padding: 0;">
+                      {% for task in employee_with_tasks.tasks %}
+                      <li class="task-item" style="margin-bottom: 10px; padding: 10px; border-radius: 10px; background-color: #F4F6F7; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);">
+                        <strong>Task {{ forloop.counter }}</strong>: {{ task.task_desc }}
+                      </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          {% else %}
+          <p style="text-align: center; font-family: 'Poppins', sans-serif; color: #7F8C8D; margin-top: 20px;">No Employees Found</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+
+{% block javascripts %}
+<script>
+  document.querySelectorAll('.show-tasks-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const taskDetails = button.closest('.employee-body').querySelector('.task-details');
+      if (taskDetails.style.display === 'none' || !taskDetails.style.display) {
+        taskDetails.style.display = 'block';
+        button.textContent = 'Hide Tasks';
+        button.classList.remove('btn-outline-primary');
+        button.classList.add('btn-primary');
+      } else {
+        taskDetails.style.display = 'none';
+        button.textContent = 'Show Tasks';
+        button.classList.remove('btn-primary');
+        button.classList.add('btn-outline-primary');
+      }
+    });
+  });
+</script>
+{% endblock javascripts %}
+
+  
+
+
+
+
+
+
+
+

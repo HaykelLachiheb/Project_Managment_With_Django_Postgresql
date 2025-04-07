@@ -1,0 +1,141 @@
+{% load static %}
+
+
+<head>
+
+  {% block stylesheets %}
+
+  <style>
+
+    .badge {
+      position: absolute;
+      top: -5px;
+      right: -10px;
+      background-color: red;
+      color: white;
+      border-radius: 50%;
+      padding: 3px 6px;
+      font-size: 12px;
+  }
+  
+  
+  
+  </style>  
+
+
+  {% endblock stylesheets %}
+
+
+</head> 
+
+
+
+{% block content %}
+
+
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top shadow">
+  <div class="container-fluid" style="height:38px">
+    <!-- Brand Section -->
+    <a class="navbar-brand d-flex align-items-center" href="#" >
+      <i class="fa fa-user-circle me-2" style="font-size: 1.5rem;"></i>
+      <span style="padding-left:10px">Welcome, {{ user.username }}</span>
+    </a>
+
+    <!-- Toggler for Mobile View -->
+    <button 
+      class="navbar-toggler" 
+      type="button" 
+      data-bs-toggle="collapse" 
+      data-bs-target="#navbarNav" 
+      aria-controls="navbarNav" 
+      aria-expanded="false" 
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Content -->
+    <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+      <!-- Search Bar -->
+      
+
+      <!-- User Actions -->
+      {% if request.user.is_authenticated %}
+      <ul class="navbar-nav" style="margin-left:685px">
+        <!-- Dashboard -->
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#dashboard" style="color:white;font-family: Avantgarde;">
+            <i class="fa fa-home me-1"></i> Dashboard
+          </a>
+        </li>
+
+        <!-- Notifications Dropdown -->
+
+        
+        <li class="nav-item dropdown">
+          <a href="{% url 'notifications_view' %}" style="color:white; font-family: Avantgarde; text-decoration:none; position: relative;">
+            Notifications
+            {% if request.unread_count > 0 %}
+                <span class="badge">{{ request.unread_count }}</span>
+            {% endif %}
+        </a>
+        
+    </li>
+      
+      
+      
+      
+
+       
+
+        <!-- Profile Dropdown -->
+        <li class="nav-item dropdown" style="display:block">
+          <a 
+            class="nav-link dropdown-toggle text-white" 
+            href="" 
+            id="profileDropdown" 
+            role="button" 
+            data-bs-toggle="dropdown" 
+            aria-expanded="false"
+          >
+            <i class="fa fa-user"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown" >
+            <li><a class="dropdown-item" href="#" >Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item text-danger" href="{% url 'logout' %}">Log out</a></li>
+          </ul>
+        </li>
+      </ul>
+      {% endif %}
+    </div>
+  </div>
+</nav>
+
+{% endblock content %}
+
+{% block javascripts %}
+
+
+<script>
+  window.onload = function() {
+    if ({{ unread_count }} > 0) {
+        document.querySelector('.badge').style.display = 'inline-block';
+    } else {
+        document.querySelector('.badge').style.display = 'none';
+    }
+};
+
+</script>
+
+
+
+
+
+
+{% endblock javascripts %}
+
+
+

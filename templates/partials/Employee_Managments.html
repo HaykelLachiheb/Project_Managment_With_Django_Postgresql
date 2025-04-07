@@ -1,0 +1,238 @@
+{% extends "partials/base.html" %}
+{% load static %}
+<head>
+
+{% block title %} Employees Managment {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+<link href="{% static 'css/material-dashboard.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/material-dashboard.css.map' %}" rel="stylesheet" />
+  <link href="{% static 'css/material-dashboard.min.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/material-dashboard-rtl.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+
+
+ <!-- Bootstrap CSS -->
+ <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+ <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" />
+ <link href="{% static 'css/bootstrap.css.map' %}" rel="stylesheet" />
+ <link href="{% static 'css/bootstrap.min.css.map' %}" rel="stylesheet" />  
+ <link href="{% static 'css/bootstrap-grid.css' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-grid.css.map' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-grid.min.css' %}" rel="stylesheet" />  
+ <link href="{% static 'css/bootstrap-grid.min.css.map' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-reboot.css' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-reboot.css.map' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-reboot.min.css' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-reboot.min.css.map' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/demo.css' %}" rel="stylesheet" /> 
+
+
+ <style>
+
+    .container-fluid{
+        height:50px;
+    }
+
+    
+.card {
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.card-header {
+    padding: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+
+    .btn btn-light{
+        width:50px;
+    }
+
+
+
+.btn-primary {
+    background-color: #5F84F7;
+    color: white;
+}
+
+.btn-danger {
+    background-color: red;
+    color: white;
+}
+
+.btn-warning {
+    background-color: orange;
+    color: white;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+
+@media (max-width: 768px) {
+    .grid-container {
+      grid-template-columns: repeat(2, 1fr); /* 2 cartes par ligne sur les écrans plus petits */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .grid-container {
+      grid-template-columns: 1fr; /* 1 carte par ligne sur les très petits écrans */
+    }
+  }
+
+  
+    <style>
+      /* Applique la police Avantgarde à tout le texte de la page */
+      body {
+        font-family: 'Avantgarde', sans-serif;
+      }
+  
+      /* Applique spécifiquement à tous les titres h5 */
+      .card-header h5 {
+        font-family: 'Avantgarde', sans-serif;
+      }
+  
+      /* Applique à tous les paragraphes dans les cartes */
+      .card-body p {
+        font-family: 'Avantgarde', sans-serif;
+      }
+    </style>
+  </head>
+  
+  
+
+
+
+ </style> 
+
+
+
+
+
+
+
+ {% endblock stylesheets %}
+
+
+
+
+{% block content %}
+
+{% if success_message %}
+    <a href="#" class="btn btn-primary" style="width:430px;padding-top:12px;margin-left:-7%" >{{ success_message }}</a>  
+    
+{% endif %}
+
+
+<div class="container-fluid" style="padding-top:-20px">
+  <div class="card card-plain" style="height:auto;margin-top:58px">
+      <div class="card-header card-header-primary">
+          <h4 class="card-title" style="font-family: Avantgarde;">Employees Management</h4>
+          
+      </div>
+
+      <div class="row">
+          <!-- Formulaire Ajouter un Employé -->
+          <div class="col-md-4">
+              <div class="card" style="height:350px">
+                  <div class="card-header text-center" style="background-color: #5F84F7; color: white;padding-top:10px">
+                      <p style="padding-top:10px">Add New Employee</p>
+                  </div>
+                  <form method="POST" action="" class="p-4">
+                      {% csrf_token %}
+                      <div class="form-group">
+                          <label for="EmployeeID">Employee ID</label>
+                          <input type="number" class="form-control" id="EmployeeID" name="EmployeeID" placeholder="Enter Employee ID">
+                      </div>
+                      <div class="form-group">
+                          <label for="EmployeeName">Employee Name</label>
+                          <input type="text" class="form-control" id="EmployeeName" name="EmployeeName" placeholder="Enter Employee Name">
+                      </div>
+                      <div class="d-flex justify-content-between">
+                          <button type="submit" class="btn btn-primary">Validate</button>
+                          <button type="button" class="btn btn-danger"style="width:97px">Delete</button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+
+          
+
+          <!-- Formulaire Mettre à jour un Employé -->
+          <div class="col-md-4">
+              <div class="card" style="height:350px">
+                  <div class="card-header text-center" style="background-color: #5F84F7; color: white;padding-top:10px">
+                      <p style="padding-top:10px">Update Employee</p>
+                  </div>
+                  <form method="POST" action="{% url 'fetch_employee' %}" class="p-4">
+                      {% csrf_token %}
+                      <div class="form-group">
+                          <label for="EmployeeID">Employee ID</label>
+                          <input type="number" class="form-control" id="EmployeeID" name="EmployeeID" placeholder="Enter Employee ID">
+                      </div>
+                      <div class="d-flex justify-content-center">
+                          <button type="submit" class="btn btn-warning">Validate</button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+
+          <!-- Formulaire Supprimer un Employé -->
+          <div class="col-md-4">
+            <div class="card" style="height:350px">
+                <div class="card-header text-center" style="background-color: #5F84F7; color: white;padding-top:10px">
+                    <p style="padding-top:10px">Delete Employee</p>
+                </div>
+                <form method="POST" action="{% url 'DeleteEmployee' %}" class="p-4">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="EmployeeID">Employee ID</label>
+                        <input type="number" class="form-control" id="EmployeeID" name="EmployeeID" placeholder="Enter Employee ID">
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-danger">Validate</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

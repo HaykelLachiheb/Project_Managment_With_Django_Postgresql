@@ -1,0 +1,190 @@
+
+
+*body{
+    
+    display: flex;
+    justify-content: space-between;
+
+    
+}
+
+#WelcomeLogo{
+    width: 100%;
+    height: 50px;
+    box-shadow: 0 0 40px 0 rgba(2, 2, 36, 0.7);
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    border-top-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    
+}
+
+#DashboardTitle2{
+    float: right;
+    background-color: transparent;
+    box-shadow: 0 0 40px 0 rgba(2, 2, 36, 0.7);
+    margin-top: 50px;
+    
+}
+
+
+#icon{
+    margin-left: 20px;
+    margin-top: 140px;
+   
+}
+
+#iconWelcome{
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+#iconLogout{
+    margin-left: 20px;
+    margin-top: 20px;
+
+}
+
+#SectionLeft h1{
+
+    width: 85%;
+    
+    padding-left: 10px;    
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+
+#SectionLeft{
+    width: 25%;
+    height: 100%;
+    
+    background-repeat: no-repeat;
+    float: left;
+    box-shadow: 0 0 20px 0 rgba(15, 15, 128, 0.2);
+    box-sizing: border-box;
+    background-repeat: 1px solid yellow;
+    
+
+   
+}
+
+#SectionRight{
+    width: 75%;
+    height: 100%;
+    margin-top: 20px;
+    float: right;
+    display: flex;
+    justify-content: space-between;
+    background-repeat: no-repeat;
+    box-shadow: 0 0 40px 0 rgba(2, 2, 36, 0.7);
+    border-bottom-left-radius: 200px;
+    border-top-right-radius: 200px;
+    display: flex;
+    justify-content:space-around;
+    flex-wrap: wrap; 
+}
+
+#LogoDiv{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    padding: auto;
+    margin: auto;
+    
+}
+#LogoDiv i{
+    width: 20px;
+    height: 20px;
+    color: yellow;
+    margin-top: 7px;
+    margin-left: 42%;
+
+}    
+
+
+#Div1,#Div2{
+    width: 40%;
+    height: 70%;
+    padding: auto;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#Div2{
+    margin-left: 3px;
+}
+
+#Div1-Part1,#Div1-Part2,#Div1-Part3{
+    width: 100%;
+    height: 20%;
+    border: 1px solid #1F2C3C;
+    margin-top: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px 0 rgba(2, 2, 43, 0.2);
+    box-sizing: border-box;
+    background-color: #FF6219;
+    
+    
+}
+#Div1-Part2{
+    background-color:white;
+
+}
+
+
+#Div2-Part1,#Div2-Part2,#Div2-Part3{
+    width: 100%;
+    height: 20%;
+    border: 1px solid #1F2C3C;
+    margin-top: 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px 0 rgba(2, 2, 43, 0.2);
+    box-sizing: border-box;
+    background-color: transparent;
+    
+}
+
+#Div2-Part1{
+    background-color:white;
+
+}
+
+
+#Div2-Part2{
+    background-color:#FF6219;
+
+}
+
+
+
+#Div1-Part1 h3,#Div1-Part2 h3,#Div1-Part3 h3{
+    color: #0F466D;
+    font-size: 25px;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: transparent;    
+    margin: auto;
+    margin-top: 30px;
+    margin-left: 25%;
+    
+}
+
+#Div2-Part1 h3,#Div2-Part2 h3,#Div2-Part3 h3{
+    color: #0F466D;
+    font-size: 25px;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: transparent;
+    
+    margin: auto;
+    margin-top: 30px;
+    margin-left: 35%;
+    
+}
+
+
+
+

@@ -1,0 +1,231 @@
+
+
+.card{
+    height: 440px;
+    box-shadow: 0 0 30px 0 rgba(50, 50, 192, 0.2);
+    background-color: red;
+    background-image: url("/images/Form_BackGround.jpg");
+    
+
+}
+
+#id_username{
+    background-color: red;
+}
+
+
+#Row{
+    background-image: url("/images/Form_BackGround.jpg");
+
+}
+
+.alert.error {
+    color: red;
+    font-weight: bold;
+}
+.alert.success {
+    color: green;
+    font-weight: bold;
+}
+
+
+
+#vh-70{
+    background-color: #bec0db;
+}
+
+#EmailBox{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+   
+    align-items: center;
+}
+
+#EmailInput{
+    width: 75%;
+    height: 100%;
+    float: left;
+    padding-left: 40px;
+}
+
+#EmailLabel{
+    width: 25%;
+    height: 100%;
+    float: right;
+    
+    margin: auto;
+    padding: auto;
+    margin-top: 10px;
+}
+
+#emailIcon{
+    position: absolute;
+    margin-left: 120px;
+    color: rgb(161, 161, 231);
+}
+
+#FormSpan{
+    padding-left: 10px;
+}
+
+
+
+
+
+#PasswordBox{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+   
+    align-items: center;
+}
+
+#EmailInput{
+    width: 75%;
+    height: 100%;
+    float: left;
+    padding-left: 40px;
+}
+
+#passwodInput{
+    width: 75%;
+}
+
+#PasswordLabel{
+    width: 25%;
+    height: 100%;
+    float: right;
+    
+    margin: auto;
+    padding: auto;
+    margin-top: 10px;
+}
+
+#passwordIcon{
+    position: absolute;
+    margin-left: 120px;
+    color: rgb(161, 161, 231);
+}
+
+#GroupBtn{
+    padding: auto;
+    margin: auto;
+    width: 50%;
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+
+#BtnLogin{
+    width: 100px;
+    height: 50px;
+    background: red;
+    color: white;
+    border: 1px solid rgb(32, 22, 177);    
+    border-radius: 20px;    
+    font-size: 20px;
+    position:relative;
+    z-index: 0;
+}
+
+.Button_Login_Overlay{
+    width: 0%;
+    height: 0%;
+    background: red;
+    transition: 1s;
+    position: absolute;
+    z-index: -1;
+    border: 1px solid #0F6186;
+    top: 0;
+    left: 0;
+    border-radius: 40px;
+}
+
+
+#BtnLogin:hover .Button_Login_Overlay{
+
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 20px;
+    opacity: 0.3;
+    cursor: pointer;
+}
+
+
+
+
+
+
+#BtnReset{
+    width: 100px;
+    height: 50px;
+    background: red;
+    color: white;
+    border: 1px solid rgb(32, 22, 177);    
+    border-radius: 20px;    
+    font-size: 20px;
+    position:relative;
+    z-index: 0;
+    margin-top: 0px;
+}
+
+
+
+.Button_Reset_Overlay{
+    width: 0%;
+    height: 0%;
+    background: red;
+    transition: 1s;
+    position: absolute;
+    z-index: -1;
+    border: 1px solid #0F6186;
+    top: 0;
+    left: 0;
+    border-radius: 40px;
+}
+
+
+#BtnReset:hover .Button_Reset_Overlay{
+
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 20px;
+    opacity: 0.3;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+#LinkForgotPassword{
+    color: white important;
+    text-decoration: none;
+    
+}
+
+#LastPart{
+    width: 100%;
+    height: 50px;
+    background-color: transparent;
+    
+    display: flex;
+    justify-content: space-around;
+
+}
+
+#LastPart a{
+    color: white ;
+}
+

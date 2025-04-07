@@ -1,0 +1,324 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+<head>
+
+    {% block stylesheets %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+<link href="{% static 'css/material-dashboard.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/material-dashboard.css.map' %}" rel="stylesheet" />
+  <link href="{% static 'css/material-dashboard.min.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/material-dashboard-rtl.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+
+
+ <!-- Bootstrap CSS -->
+ <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+ <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" />
+ <link href="{% static 'css/bootstrap.css.map' %}" rel="stylesheet" />
+ <link href="{% static 'css/bootstrap.min.css.map' %}" rel="stylesheet" />  
+ <link href="{% static 'css/bootstrap-grid.css' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-grid.css.map' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-grid.min.css' %}" rel="stylesheet" />  
+ <link href="{% static 'css/bootstrap-grid.min.css.map' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-reboot.css' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-reboot.css.map' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-reboot.min.css' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/bootstrap-reboot.min.css.map' %}" rel="stylesheet" /> 
+ <link href="{% static 'css/demo.css' %}" rel="stylesheet" /> 
+
+
+<style>
+
+  /* Global */
+  body {
+    font-family: Avantgarde;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .notifications-wrapper {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    font-family: Avantgarde;
+  }
+  
+  .notification-section {
+    flex: 1;
+    min-width: 300px;
+    max-width: 48%;
+    padding: 20px;
+    background-color: #fafafa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .section-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+    
+
+    border-bottom: 2px solid #007BFF;
+    padding-bottom: 5px;
+  }
+  
+  .notification-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  /* Notification Card */
+  .notification-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .notification-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .notification-icon {
+    font-size: 24px;
+    color: #007BFF;
+    margin-right: 15px;
+  }
+  
+  .notification-content {
+    flex: 1;
+  }
+  
+  .notification-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .notification-message {
+    font-size: 14px;
+    color: #555;
+    margin: 5px 0;
+  }
+  
+  .notification-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .notification-status {
+    font-size: 12px;
+    color: #28a745;
+    font-weight: bold;
+  }
+  
+  .notification-status.read {
+    color: #6c757d;
+  }
+  
+  .notification-status.unread {
+    color: #007BFF;
+  }
+  
+  .notification-date {
+    font-size: 12px;
+    color: #888;
+  }
+  
+  .mark-read-btn {
+    font-size: 14px;
+    background-color: #007BFF;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin-top:-9px;
+    width:125px;
+  }
+  
+  .mark-read-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* No notifications message */
+  .no-notifications {
+    font-size: 16px;
+    color: #6c757d;
+    text-align: center;
+  }
+
+  
+    .notifications-summary {
+      font-family: 'Avantgarde', sans-serif;
+      width: 75%;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #f8f9fa;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display:flex;
+      justify-content:space-between;
+    }
+  
+    .notification-summary-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #ffffff;
+      margin: 10px 0;
+      padding: 12px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+  
+    .notification-summary-item:hover {
+      transform: translateY(-5px);
+      background-color: #f1f3f5;
+    }
+  
+    .notification-summary-item i {
+      font-size: 32px;
+      color: #007bff;
+    }
+  
+    .notification-summary-item p {
+      margin: 0;
+      font-size: 16px;
+      color: #333333;
+    }
+  
+    .notification-summary-item strong {
+      font-size: 18px;
+      color: #007bff;
+    }
+  
+    .notification-summary-item.unread {
+      border-left: 5px solid #ffc107;
+    }
+  
+    .notification-summary-item.read {
+      border-left: 5px solid #28a745;
+    }
+  
+    .notification-summary-item p {
+      font-weight: 500;
+    }
+  
+
+</style>    
+
+
+
+
+ {% endblock stylesheets %}
+
+
+
+
+
+</head>    
+
+{% block content %}
+<div class="card" style="border: 1px solid #ddd; border-radius: 8px; font-family: Avantgarde; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);height:47px;margin-bottom:0px">
+  <div class="card-header" style="background-color: #007bff; color: white; text-align: center; padding: 10px; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+    <h1 style="margin: 0; font-size: 33px;">Notifications Dashboard</h1>
+  </div>
+ 
+</div>
+
+
+<div class="notifications-summary">
+  <div class="notification-summary-item">
+    <i class="material-icons summary-icon">notifications</i>
+    <p>Total Notifications: <strong>{{ total_count }}</strong></p>
+  </div>
+  <div class="notification-summary-item unread">
+    <i class="material-icons summary-icon">mail</i>
+    <p>Unread Notifications: <strong>{{ unread_count }}</strong></p>
+  </div>
+  <div class="notification-summary-item read">
+    <i class="material-icons summary-icon">mark_email_read</i>
+    <p>Read Notifications: <strong>{{ read_count }}</strong></p>
+  </div>
+</div>
+
+
+<div class="notifications-wrapper">
+  <div class="notification-section unread-notifications">
+    <h2 class="section-title" style="font-style:italic">Unread Notifications</h2>
+    {% if notifications %}
+      <div class="notification-list">
+        {% for notification in notifications %}
+          {% if not notification.is_read %}
+            <div class="notification-card unread">
+              <div class="notification-icon">
+                <span class="icon">&#128276;</span>  <!-- Bell icon -->
+ <!-- étoile symbolisant une notification non lue -->
+              </div>
+              <div class="notification-content">
+                <strong class="notification-title">Title : {{ notification.title }}</strong>
+                <div class="notification-footer">
+                  <span class="notification-date">Created At : {{ notification.created_at }}</span>
+                 
+                </div>
+                <p class="notification-message">Message : {{ notification.message }}</p>
+              </div>
+              
+               
+            </div>
+            <a href="{% url 'mark_notification_as_read' notification.id %}" class="mark-read-btn">Mark as Read</a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="no-notifications">No unread notifications available.</div>
+    {% endif %}
+  </div>
+
+  <div class="notification-section read-notifications">
+    <h2 class="section-title" style="font-style:italic">Read Notifications</h2>
+    {% if notifications %}
+      <div class="notification-list">
+        {% for notification in notifications %}
+          {% if notification.is_read %}
+            <div class="notification-card read">
+              <div class="notification-icon">
+                <span class="icon">&#10003;</span><!-- carré symbolisant une notification lue -->
+              </div>
+              <div class="notification-content">
+                <strong class="notification-title">Title : {{ notification.title }}</strong>
+                <div class="notification-footer">
+                  <span class="notification-date">Created At : {{ notification.created_at }}</span>
+                </div>
+                <p class="notification-message">Message : {{ notification.message }}</p>
+               
+              </div>
+              
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="no-notifications">No read notifications available.</div>
+    {% endif %}
+  </div>
+</div>
+
+
+
+{% endblock %}
